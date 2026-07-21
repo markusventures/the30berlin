@@ -106,7 +106,7 @@
         </p>
       </div>
       <div class="vision__media reveal">
-        <video src="assets/creator.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Creator-Marketing Impressionen"></video>
+        <video src="assets/creator.mp4" poster="assets/creator-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Creator-Marketing Impressionen"></video>
       </div>
     </div>
   </section>
@@ -167,24 +167,19 @@
     <div class="container location__grid">
       <div class="location__text reveal">
         <span class="eyebrow" data-en="Location">Location</span>
-        <h2 class="section__title section__title--sm">Hotel Telegraphenamt</h2>
-        <p class="location__addr">Monbijoustraße 11 · 10117 Berlin-Mitte</p>
-        <p class="lead" data-en="A listed 19th-century post office, today one of Berlin&apos;s most impressive event locations. The perfect setting for an evening to remember.">Ein denkmalgeschütztes Amt aus dem 19. Jahrhundert, heute einer der eindrucksvollsten Event-Orte Berlins. Der perfekte Rahmen für einen Abend, der in Erinnerung bleibt.</p>
-        <p class="location__date" data-en="Tuesday, September 15, 2026">Dienstag, 15. September 2026</p>
-        <a href="https://maps.google.com/?q=Hotel+Telegraphenamt,+Monbijoustraße+11,+10117+Berlin" target="_blank" rel="noopener" class="link-arrow" data-en="View on the map →">Auf der Karte ansehen →</a>
+        <h2 class="section__title section__title--sm" data-en="A secret location — revealed only to our guests.">Ein geheimer Ort — enthüllt nur für unsere Gäste.</h2>
+        <p class="lead" data-en="The 30 is a private dinner in an exceptional setting in the heart of Berlin. Where exactly the long table stands, we reveal only to confirmed guests — fine dining in an exclusive setting, away from the noise.">The 30 ist ein privates Dinner an einem außergewöhnlichen Ort mitten in Berlin. Wo genau die lange Tafel steht, verraten wir ausschließlich bestätigten Gästen — Fine Dining in einem exklusiven Rahmen, fernab vom Trubel.</p>
+        <p class="location__date" data-en="Tuesday, September 15, 2026 · Berlin">Dienstag, 15. September 2026 · Berlin</p>
       </div>
       <div class="location__media reveal">
-        <!-- Deko-Illustration Standort-Pin; später durch Foto ersetzbar (assets/location.jpg) -->
-        <div class="pin-card">
-          <svg class="pin-card__map" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="400" height="300" fill="#f4f2ef"/>
-            <path d="M0 90 L400 60 M0 160 L400 140 M0 230 L400 210 M120 0 L90 300 M240 0 L220 300 M340 0 L330 300" stroke="#e3ded7" stroke-width="5" fill="none"/>
-            <path d="M200 248 c-28 -48 -44 -74 -44 -100 a44 44 0 0 1 88 0 c0 26 -16 52 -44 100z" fill="#141414"/>
-            <circle cx="200" cy="146" r="16" fill="#fff"/>
-            <circle cx="200" cy="146" r="6" fill="var(--primary)"/>
-          </svg>
-          <div class="pin-card__label"><strong>Hotel Telegraphenamt</strong><span>Berlin-Mitte</span></div>
-        </div>
+        <figure class="secret-card">
+          <img src="assets/atmosphere/dinner.jpg" alt="Privates Fine-Dining in exklusivem Rahmen" loading="lazy" />
+          <figcaption class="secret-card__cap">
+            <span class="secret-card__lock" aria-hidden="true">🔒</span>
+            <strong data-en="Location revealed to approved guests">Ort wird nach Zusage enthüllt</strong>
+            <span data-en="Berlin · Private dinner">Berlin · Privates Dinner</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -235,7 +230,7 @@
         <details class="acc"><summary data-en="Who attends The 30?">Wer nimmt an The 30 teil?</summary><div class="acc__body"><p data-en="Around 30 hand-picked guests — founders, marketing leads, agency heads and creators who play a leading role in German creator &amp; influencer marketing.">Rund 30 handverlesene Gäste — Gründer:innen, Marketing-Leads, Agentur-Köpfe und Creator, die im deutschen Creator- &amp; Influencer-Marketing eine führende Rolle spielen.</p></div></details>
         <details class="acc"><summary data-en="How do I get an invite?">Wie bekomme ich eine Einladung?</summary><div class="acc__body"><p data-en="The 30 is invitation-only. You can request to attend via Luma — confirmation follows after a personal approval by the host.">The 30 ist ausschließlich auf Einladung. Du kannst deine Teilnahme über Luma anfragen — die Zusage erfolgt nach persönlicher Freigabe durch den Host.</p></div></details>
         <details class="acc"><summary data-en="What does it cost to attend?">Was kostet die Teilnahme?</summary><div class="acc__body"><p data-en="Attendance is by personal invitation. You&apos;ll receive all details after your request.">Die Teilnahme erfolgt auf persönliche Einladung. Alle Details erhältst du im Anschluss an deine Anfrage.</p></div></details>
-        <details class="acc"><summary data-en="When &amp; where does it take place?">Wann &amp; wo findet es statt?</summary><div class="acc__body"><p data-en="On Tuesday, September 15, 2026, at Hotel Telegraphenamt, Monbijoustraße 11, 10117 Berlin. You&apos;ll receive the final agenda via Luma.">Am Dienstag, 15. September 2026, im Hotel Telegraphenamt, Monbijoustraße 11, 10117 Berlin. Die finale Agenda erhältst du über Luma.</p></div></details>
+        <details class="acc"><summary data-en="When &amp; where does it take place?">Wann &amp; wo findet es statt?</summary><div class="acc__body"><p data-en="On Tuesday, September 15, 2026, in Berlin. We share the exact location exclusively with confirmed guests — you&apos;ll receive the final agenda via Luma.">Am Dienstag, 15. September 2026, in Berlin. Den genauen Ort teilen wir ausschließlich mit bestätigten Gästen — die finale Agenda erhältst du über Luma.</p></div></details>
         <details class="acc"><summary data-en="Is The 30 a one-off?">Ist The 30 eine einmalige Sache?</summary><div class="acc__body"><p data-en="No — The 30 is designed as a recurring series. Berlin is the kickoff, more evenings will follow.">Nein — The 30 ist als wiederkehrende Reihe gedacht. Berlin ist der Auftakt, weitere Abende folgen.</p></div></details>
       </div>
     </div>
