@@ -105,6 +105,8 @@ a { color: inherit; text-decoration: none; }
 .brand-img { max-height: 38px; max-width: 150px; width: auto; height: auto;
   filter: grayscale(1); opacity: 0.5; transition: filter .3s ease, opacity .3s ease, transform .3s ease; }
 .brand-img:hover { filter: none; opacity: 1; transform: translateY(-2px); }
+/* breite Wortmarken (cosnova, Duolingo) kleiner, damit sie nicht dominieren */
+.brand-img--sm { max-height: 26px; max-width: 108px; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100vh; min-height: 100svh;
@@ -122,9 +124,10 @@ a { color: inherit; text-decoration: none; }
 .hero__title { font-weight: 600; letter-spacing: -0.025em; line-height: 1.1;
   font-size: clamp(2.1rem, 4.4vw, 3.5rem); margin-bottom: 1.5rem; }
 .hero__lede { max-width: 48ch; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-.hero__media { position: relative; display: flex; flex-direction: column; justify-content: space-between; }
-.hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+.hero__media { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
+.hero__media img { display: block; width: 75%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
   border-radius: 26px; box-shadow: 0 34px 80px rgba(20,20,20,0.24); }
+.hero__media .hero__meta { width: 75%; }
 .hero__cta { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2.4rem; }
 .hero__meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   width: 100%; margin-top: 1.6rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
@@ -274,7 +277,8 @@ a { color: inherit; text-decoration: none; }
   .hero { min-height: 0; padding: 8rem var(--gutter) 4rem; }
   .hero__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero__inner { max-width: 620px; }
-  .hero__media { max-width: 480px; }
+  .hero__media { max-width: 480px; align-items: stretch; }
+  .hero__media img, .hero__media .hero__meta { width: 100%; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
