@@ -11,6 +11,24 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* ---- URL sauber halten: sanft scrollen, aber keine #anchor in der Adresszeile ---- */
+  const cleanUrl = () => {
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  };
+  if (location.hash) cleanUrl();
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("href").slice(1);
+      const toTop = id === "top" || id === "";
+      const target = toTop ? document.body : document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      if (toTop) window.scrollTo({ top: 0, behavior: "smooth" });
+      else target.scrollIntoView({ behavior: "smooth" });
+      cleanUrl();
+    });
+  });
+
   /* ---- Sprachumschalter DE / EN ----
      Jedes übersetzbare Element trägt data-en mit der englischen Fassung.
      Die deutsche Originalfassung wird beim Laden gesichert. */
