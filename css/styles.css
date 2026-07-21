@@ -40,6 +40,8 @@ img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 .container { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
 
+/* roter Text-Akzent (WePush-Rot) */
+.hl { color: var(--primary); }
 /* dezenter roter Akzent-Unterstrich (sparsam eingesetzt) */
 .ux { position: relative; white-space: nowrap; }
 .ux::after { content: ""; position: absolute; left: 0; right: 0; bottom: -0.06em; height: 2px; background: var(--primary); border-radius: 2px; opacity: .9; }
