@@ -150,10 +150,12 @@ a { color: inherit; text-decoration: none; }
 .vision__text { align-self: center; }
 .vision__sub { margin-top: 1rem; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; line-height: 1.4; color: var(--ink); }
 .vision__sub + .lead { margin-top: 1.1rem; }
-/* Highlight-Satz unter Section 2 (voll breit, prominent) */
-.vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 880px; text-align: center;
-  padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--line);
-  font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 500; line-height: 1.45; color: var(--ink); }
+/* Highlight-Satz unter Section 2 — eigenes dunkles Panel, hebt sich klar ab */
+.vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 980px; text-align: center;
+  background: var(--ink-2); color: #fff; border-radius: 26px;
+  padding: clamp(2.6rem, 5vw, 4rem) clamp(1.6rem, 5vw, 3.5rem);
+  box-shadow: 0 30px 70px rgba(20,20,20,0.16);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 500; line-height: 1.5; }
 .vision__media { display: flex; justify-content: center; }
 /* Video vollständig zeigen, keine abgeschnittenen Ränder; feste Ratio → nie leerer Kasten */
 .vision__media video { display: block; width: 100%; height: auto; aspect-ratio: 1080 / 904;
