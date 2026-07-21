@@ -32,7 +32,9 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--bg); color: var(--ink);
+  background-color: var(--bg); color: var(--ink);
+  background-image: radial-gradient(rgba(20,19,26,0.045) 1px, transparent 1px);
+  background-size: 42px 42px;
   font-family: var(--font); font-size: 17px; line-height: 1.65; font-weight: 400;
   -webkit-font-smoothing: antialiased; overflow-x: hidden;
 }
@@ -151,13 +153,13 @@ a { color: inherit; text-decoration: none; }
 .lead { margin-top: 1.5rem; max-width: 64ch; color: var(--ink-soft); font-size: 1.13rem; }
 
 /* ---------- Vision ---------- */
-.vision { background: var(--bg-soft); }
+.vision { background-color: var(--bg-soft); background-image: radial-gradient(rgba(20,19,26,0.05) 1px, transparent 1px); background-size: 42px 42px; }
 .vision__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
 .vision__text { align-self: center; }
 .vision__sub { margin-top: 1rem; font-size: clamp(1.05rem, 1.6vw, 1.2rem); font-weight: 400; line-height: 1.5; color: var(--ink-soft); }
 .vision__sub + .lead { margin-top: 1.1rem; }
 /* Highlight-Satz unter Section 2 — weißes Panel mit grauem Rand, erhabener Effekt */
-.vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 1060px; text-align: center;
+.vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 1200px; text-align: center;
   background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 26px;
   padding: clamp(2.2rem, 5vw, 3.4rem) clamp(1.6rem, 4vw, 3rem);
   box-shadow: 0 22px 55px rgba(20,20,20,0.10);
@@ -165,7 +167,7 @@ a { color: inherit; text-decoration: none; }
 .vision__highlight:hover { transform: translateY(-6px); box-shadow: 0 32px 66px rgba(20,20,20,0.13); }
 .vision__badge { display: inline-block; margin-bottom: 1.4rem; }
 .vision__badge svg { display: block; border-radius: 16px; box-shadow: 0 10px 24px rgba(20,20,20,0.20); }
-.vision__highlight-text { margin: 0; font-size: clamp(1.05rem, 1.6vw, 1.2rem); font-weight: 400;
+.vision__highlight-text { margin: 0; font-size: clamp(0.9rem, 1.35vw, 1.05rem); font-weight: 400;
   line-height: 1.6; color: var(--ink-soft); }
 .vision__punch { display: inline-block; margin-top: 1.2rem; font-weight: 800;
   font-size: clamp(1.3rem, 2.5vw, 1.7rem); line-height: 1.35; letter-spacing: -0.01em; color: var(--ink); }
@@ -175,14 +177,21 @@ a { color: inherit; text-decoration: none; }
   object-fit: contain; background: #0d0d0f;
   border-radius: 24px; box-shadow: 0 30px 70px rgba(20,20,20,0.20); }
 
-/* ---------- Themes ---------- */
+/* ---------- Themes (peppige Karten) ---------- */
 .themes__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; margin-top: 3rem; }
-.theme { background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 2.2rem 2rem 2.3rem; transition: transform .3s ease, box-shadow .3s ease; }
-.theme:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(20,20,20,0.07); }
-.theme__num { font-weight: 800; font-size: 0.95rem; color: var(--primary); letter-spacing: 0.05em; }
-.theme__title { font-weight: 600; font-size: 1.4rem; margin: 0.7rem 0 0.6rem; letter-spacing: -0.01em; }
-.theme__q { color: var(--ink-soft); font-size: 1.08rem; line-height: 1.5; }
+.theme { position: relative; overflow: hidden; background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 2.2rem 2rem 2.3rem; transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.theme:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,20,20,0.09); border-color: transparent; }
+/* großes Geist-Nummer im Hintergrund */
+.theme__num { position: absolute; top: -0.9rem; right: 0.3rem; z-index: 0; pointer-events: none; user-select: none;
+  font-size: 6.2rem; font-weight: 800; line-height: 1; letter-spacing: -0.04em; color: #f2f0ec; transition: color .3s ease; }
+.theme:hover .theme__num { color: var(--primary-soft); }
+.theme__icon { position: relative; z-index: 1; display: grid; place-items: center; width: 52px; height: 52px;
+  border-radius: 14px; background: var(--ink); color: #fff; margin-bottom: 1.4rem;
+  transition: background .3s ease, transform .3s ease; }
+.theme:hover .theme__icon { background: var(--primary); transform: rotate(-5deg) scale(1.06); }
+.theme__title { position: relative; z-index: 1; font-weight: 600; font-size: 1.4rem; margin: 0 0 0.6rem; letter-spacing: -0.01em; }
+.theme__q { position: relative; z-index: 1; color: var(--ink-soft); font-size: 1.06rem; line-height: 1.5; }
 
 /* ---------- Experience / Cards ---------- */
 /* Stimmungs-Galerie: alle Fotos über identischen dunklen Filter vereinheitlicht */
@@ -299,6 +308,13 @@ a { color: inherit; text-decoration: none; }
 .cta-panel > * { position: relative; z-index: 1; }
 .cta-panel__title { font-weight: 600; font-size: clamp(1.9rem, 5vw, 3rem); letter-spacing: -0.02em; }
 .cta-panel__sub { margin: 1rem auto 2rem; color: rgba(255,255,255,0.72); font-size: 1.08rem; max-width: 40ch; }
+
+/* ---------- Register / Luma-Embed ---------- */
+.register__inner { text-align: center; }
+.register__inner .section__title { max-width: 24ch; margin-inline: auto; }
+.register__inner .lead { margin-inline: auto; }
+.luma-embed { width: 100%; max-width: 600px; margin: 2.6rem auto 0; }
+.luma-embed iframe { width: 100%; height: 450px; display: block; border-radius: 12px; box-shadow: 0 22px 55px rgba(20,20,20,0.10); }
 
 /* ---------- Footer ---------- */
 .footer { padding-top: 1rem; padding-bottom: 2rem; }
