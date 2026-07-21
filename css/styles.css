@@ -150,12 +150,13 @@ a { color: inherit; text-decoration: none; }
 .vision__text { align-self: center; }
 .vision__sub { margin-top: 1rem; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; line-height: 1.4; color: var(--ink); }
 .vision__sub + .lead { margin-top: 1.1rem; }
-/* Highlight-Satz unter Section 2 — weiches, warmes Panel (WePush-Ton), hebt sich sanft ab */
+/* Highlight-Satz unter Section 2 — weißes Panel mit grauem Rand, erhabener Effekt */
 .vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 980px; text-align: center;
-  background: var(--primary-soft); color: var(--ink); border: 1px solid rgba(254,56,66,0.16); border-radius: 26px;
-  padding: clamp(2.6rem, 5vw, 4rem) clamp(1.6rem, 5vw, 3.5rem);
-  box-shadow: 0 22px 55px rgba(254,56,66,0.09);
-  font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 500; line-height: 1.5; }
+  background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 26px;
+  padding: clamp(2.4rem, 5vw, 3.6rem) clamp(1.6rem, 5vw, 3.5rem);
+  box-shadow: 0 22px 55px rgba(20,20,20,0.10);
+  font-size: clamp(1.2rem, 2.3vw, 1.6rem); font-weight: 500; line-height: 1.5; }
+.vision__highlight strong:not(.hl) { display: inline-block; margin-top: 0.5rem; font-weight: 700; }
 .vision__media { display: flex; justify-content: center; }
 /* Video vollständig zeigen, keine abgeschnittenen Ränder; feste Ratio → nie leerer Kasten */
 .vision__media video { display: block; width: 100%; height: auto; aspect-ratio: 1080 / 904;
