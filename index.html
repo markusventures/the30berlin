@@ -14,10 +14,8 @@
   <meta property="og:image" content="https://the30berlin.com/assets/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-
+  <!-- Selbst gehostete Fonts (DSGVO-konform, kein Google-CDN) -->
+  <link rel="stylesheet" href="assets/fonts/jakarta.css" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2226%22 fill=%22%23141414%22/><text x=%2250%22 y=%2270%22 font-size=%2252%22 font-family=%22sans-serif%22 font-weight=%22700%22 fill=%22white%22 text-anchor=%22middle%22>30</text></svg>" />
 </head>
@@ -71,6 +69,23 @@
           <span class="hero__meta-sep"></span>
           <div><span class="hero__meta-num">Invite</span><span class="hero__meta-lbl" data-en="only">only</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST / LOGO BAR ============ -->
+  <section class="trustbar">
+    <div class="container">
+      <p class="trustbar__label" data-en="Trusted by leading brands in creator marketing">Genutzt von führenden Marken im Creator-Marketing</p>
+      <!-- Platzhalter-Wordmarks: ausgegraut, beim Hovern in Markenfarbe (--c).
+           Für echte Logos: <span> durch <img class="brand-img" src="assets/logos/marke.svg"> ersetzen. -->
+      <div class="trustbar__logos">
+        <span class="brand" style="--c:#003C82">NIVEA</span>
+        <span class="brand" style="--c:#E6007E">cosnova</span>
+        <span class="brand" style="--c:#0064FF">Paramount</span>
+        <span class="brand" style="--c:#58CC02">Duolingo</span>
+        <span class="brand" style="--c:#111111">Sony&nbsp;Music</span>
+        <span class="brand" style="--c:#1B4E9B">EDEKA</span>
       </div>
     </div>
   </section>
@@ -253,7 +268,7 @@
     </div>
     <div class="footer__bottom container">
       <span>© 2026 The 30 · presented by WePush</span>
-      <span><a href="impressum.html" data-en="Imprint">Impressum</a> · <a href="#" data-en="Privacy">Datenschutz</a></span>
+      <span><a href="impressum.html" data-en="Imprint">Impressum</a> · <a href="datenschutz.html" data-en="Privacy">Datenschutz</a></span>
     </div>
   </footer>
 
