@@ -148,6 +148,10 @@ a { color: inherit; text-decoration: none; }
 .vision__text { align-self: center; }
 .vision__sub { margin-top: 1rem; font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; line-height: 1.4; color: var(--ink); }
 .vision__sub + .lead { margin-top: 1.1rem; }
+/* Highlight-Satz unter Section 2 (voll breit, prominent) */
+.vision__highlight { margin: clamp(3rem, 6vw, 5rem) auto 0; max-width: 880px; text-align: center;
+  padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--line);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 500; line-height: 1.45; color: var(--ink); }
 .vision__media { display: flex; justify-content: center; }
 /* Video vollständig zeigen, keine abgeschnittenen Ränder; feste Ratio → nie leerer Kasten */
 .vision__media video { display: block; width: 100%; height: auto; aspect-ratio: 1080 / 904;
@@ -162,10 +166,27 @@ a { color: inherit; text-decoration: none; }
   filter: grayscale(0.35) brightness(0.6) contrast(1.05);
   transition: transform .6s ease, filter .4s ease; }
 .mood__tile::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to top, rgba(12,12,14,0.9) 0%, rgba(12,12,14,0.2) 55%, rgba(12,12,14,0.4) 100%); }
-.mood__tile figcaption { position: absolute; left: 1rem; bottom: 0.9rem; z-index: 1;
-  color: #fff; font-weight: 600; font-size: 0.92rem; letter-spacing: -0.01em; }
+  background: linear-gradient(to top, rgba(12,12,14,0.94) 0%, rgba(12,12,14,0.55) 30%, rgba(12,12,14,0.05) 62%, rgba(12,12,14,0.3) 100%); }
+.mood__cap { position: absolute; left: 1.5rem; right: 1.5rem; bottom: 1.4rem; z-index: 1; color: #fff; }
+.mood__cap h3 { font-weight: 600; font-size: 1.35rem; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.mood__cap p { color: rgba(255,255,255,0.82); font-size: 0.95rem; line-height: 1.4; }
 .mood__tile:hover img { transform: scale(1.06); filter: grayscale(0.15) brightness(0.72) contrast(1.05); }
+
+/* Überschrift „Drei Zutaten…" in einer Zeile */
+.experience__title { max-width: none; white-space: nowrap; }
+
+/* ---------- Ablaufplan / Timeline ---------- */
+.schedule { margin-top: clamp(3.5rem, 7vw, 6rem); }
+.schedule__head { margin-bottom: 2.4rem; }
+.schedule__title { font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.02em; margin-top: 0.3rem; }
+.timeline { list-style: none; position: relative; max-width: 720px; }
+.timeline::before { content: ""; position: absolute; top: 14px; bottom: 14px; left: 74px; width: 2px; background: var(--line); }
+.timeline__item { position: relative; display: grid; grid-template-columns: 58px 1fr; column-gap: 2.4rem; padding: 0.72rem 0; }
+.timeline__time { text-align: right; font-weight: 700; color: var(--primary); font-size: 0.98rem; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.timeline__item::before { content: ""; position: absolute; left: 70px; top: 1.02rem; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--primary); box-shadow: 0 0 0 4px var(--bg); }
+.timeline__item--end::before { background: var(--ink); }
+.timeline__point { font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
 
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 3rem; }
 .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
@@ -279,12 +300,17 @@ a { color: inherit; text-decoration: none; }
   .hero__inner { max-width: 620px; }
   .hero__media { max-width: 480px; align-items: stretch; }
   .hero__media img, .hero__media .hero__meta { width: 100%; }
+  .experience__title { white-space: normal; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
   .cards, .flow, .grid-gallery, .mood { grid-template-columns: 1fr; }
   .grid-gallery { grid-template-columns: 1fr 1fr; }
-  .mood__tile { aspect-ratio: 16 / 10; }
+  .mood__tile { aspect-ratio: 3 / 2; }
+  .timeline::before { left: 62px; }
+  .timeline__item { grid-template-columns: 48px 1fr; column-gap: 1.6rem; }
+  .timeline__item::before { left: 58px; }
+  .timeline__point { font-size: 0.98rem; }
   .hero { padding-top: 7rem; }
   .hero__meta-sep { display: none; }
   .hero__meta { gap: 1.4rem; }

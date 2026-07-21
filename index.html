@@ -91,23 +91,24 @@
 
   <!-- ============ VISION ============ -->
   <section class="section vision" id="vision">
-    <div class="container vision__grid">
-      <div class="vision__text reveal">
-        <span class="eyebrow" data-en="The Idea">Die Idee</span>
-        <h2 class="section__title" data-en="Creators are the most important growth channel for modern brands.">
-          Creator sind der wichtigste Wachstumskanal moderner Marken.
-        </h2>
-        <p class="vision__sub" data-en="Scaling them at a constant ROI remains complex.">
-          Die Skalierung bei konstantem ROI bleibt weiterhin komplex.
-        </p>
-        <p class="lead" data-en="&lt;strong&gt;The 30&lt;/strong&gt; brings exactly the people to one table who solve this challenge every day: marketing leaders shaping the German market.">
-          <strong>„The 30"</strong> bringt genau die Menschen an einen Tisch, die diese Herausforderung
-          täglich lösen: Marketing-Leader, die den deutschen Markt prägen.
-        </p>
+    <div class="container">
+      <div class="vision__grid">
+        <div class="vision__text reveal">
+          <span class="eyebrow" data-en="The Idea">Die Idee</span>
+          <h2 class="section__title" data-en="Creators are the most important growth channel for modern brands.">
+            Creator sind der wichtigste Wachstumskanal moderner Marken.
+          </h2>
+          <p class="vision__sub" data-en="But scaling them at a constant ROI remains complex.">
+            Die Skalierung bei konstantem ROI bleibt aber weiterhin komplex.
+          </p>
+        </div>
+        <div class="vision__media reveal">
+          <video src="assets/creator.mp4" poster="assets/creator-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Creator-Marketing Impressionen"></video>
+        </div>
       </div>
-      <div class="vision__media reveal">
-        <video src="assets/creator.mp4" poster="assets/creator-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Creator-Marketing Impressionen"></video>
-      </div>
+      <p class="vision__highlight reveal" data-en="&lt;strong class=&quot;hl&quot;&gt;The 30&lt;/strong&gt; brings exactly the people to one table who solve this challenge every day: marketing leaders shaping the German market.">
+        <strong class="hl">„The 30"</strong> bringt genau die Menschen an einen Tisch, die diese Herausforderung täglich lösen: Marketing-Leader, die den deutschen Markt prägen.
+      </p>
     </div>
   </section>
 
@@ -115,49 +116,52 @@
   <section class="section experience" id="experience">
     <div class="container">
       <span class="eyebrow" data-en="The Evening">Der Abend</span>
-      <h2 class="section__title section__title--sm reveal" data-en="Three ingredients, one unforgettable evening.">Drei Zutaten, ein unvergesslicher Abend.</h2>
+      <h2 class="section__title section__title--sm experience__title reveal" data-en="Three ingredients, one unforgettable evening.">Drei Zutaten, ein unvergesslicher Abend.</h2>
 
-      <!-- Stimmungs-Galerie (lizenzfreie Fotos, einheitlicher dunkler Filter).
-           Später durch echte, freigegebene Location-/Event-Fotos ersetzbar. -->
+      <!-- Foto-Tiles mit Text direkt auf dem dunklen Bild (keine separaten Boxen) -->
       <div class="mood mood--three reveal">
-        <figure class="mood__tile"><img src="assets/atmosphere/interior.jpg" alt="Cozy, stimmungsvolles Restaurant-Interieur" loading="lazy" /><figcaption data-en="Cozy Atmosphere">Cozy Atmosphäre</figcaption></figure>
-        <figure class="mood__tile"><img src="assets/atmosphere/dining.jpg" alt="Fine-Dining-Gericht in dramatischem Licht" loading="lazy" /><figcaption data-en="Fine Dining">Fine Dining</figcaption></figure>
-        <figure class="mood__tile"><img src="assets/atmosphere/speaker.jpg" alt="Speaker mit Mikrofon beim Abend" loading="lazy" /><figcaption data-en="Keynote Moments">Keynote-Momente</figcaption></figure>
+        <figure class="mood__tile">
+          <img src="assets/atmosphere/dining.jpg" alt="Fine-Dining-Gericht in dramatischem Licht" loading="lazy" />
+          <figcaption class="mood__cap">
+            <h3 data-en="Fine Dining">Fine Dining</h3>
+            <p data-en="A multi-course dinner in one of Berlin&apos;s most extraordinary spaces.">Mehrgängiges Dinner an einem der außergewöhnlichsten Orte Berlins.</p>
+          </figcaption>
+        </figure>
+        <figure class="mood__tile">
+          <img src="assets/atmosphere/speaker.jpg" alt="Speaker mit Mikrofon beim Abend" loading="lazy" />
+          <figcaption class="mood__cap">
+            <h3 data-en="Short Keynotes">Kurze Keynotes</h3>
+            <p data-en="Sharp impulses — no panels, just substance.">Prägnante Impulse — keine Panels, nur Substanz.</p>
+          </figcaption>
+        </figure>
+        <figure class="mood__tile">
+          <img src="assets/atmosphere/interior.jpg" alt="Cozy, stimmungsvolles Restaurant-Interieur" loading="lazy" />
+          <figcaption class="mood__cap">
+            <h3 data-en="Networking">Networking</h3>
+            <p data-en="Informal conversations in a deliberately small circle.">Informelle Gespräche in bewusst kleiner Runde.</p>
+          </figcaption>
+        </figure>
       </div>
 
-      <div class="cards reveal">
-        <article class="card">
-          <span class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M14 6v14a4 4 0 01-8 0V6M10 6v36M34 6c-4 0-6 4-6 10s2 8 6 8 6-2 6-8-2-10-6-10zm0 18v18"/></svg>
-          </span>
-          <span class="card__idx">01</span>
-          <h3 class="card__title" data-en="Fine Dining">Fine Dining</h3>
-          <p class="card__text" data-en="A multi-course dinner in one of Berlin&apos;s most extraordinary spaces — the setting for conversations that go deeper.">Ein mehrgängiges Dinner in einem der außergewöhnlichsten Räume Berlins — als Rahmen für Gespräche, die tiefer gehen.</p>
-        </article>
-        <article class="card">
-          <span class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="26" height="26"><rect x="18" y="6" width="12" height="22" rx="6" fill="none" stroke="currentColor" stroke-width="2.4"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 22a12 12 0 0024 0M24 34v8M17 42h14"/></svg>
-          </span>
-          <span class="card__idx">02</span>
-          <h3 class="card__title" data-en="Short Keynotes">Kurze Keynotes</h3>
-          <p class="card__text" data-en="Sharp impulses from people building creator marketing at scale — no panels, no sales pitch, just substance.">Prägnante Impulse von Menschen, die Creator-Marketing im großen Stil bauen — keine Panels, keine Verkaufsshow, nur Substanz.</p>
-        </article>
-        <article class="card">
-          <span class="card__icon" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="26" height="26"><circle cx="15" cy="16" r="5.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="33" cy="16" r="5.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 40c0-6 4-10 9-10s9 4 9 10M24 40c0-6 4-10 9-10s9 4 9 10"/></svg>
-          </span>
-          <span class="card__idx">03</span>
-          <h3 class="card__title" data-en="Networking">Networking</h3>
-          <p class="card__text" data-en="Informal conversations among peers who get the market. The circle is deliberately small — so everyone meets everyone.">Informelle Gespräche unter Peers, die den Markt verstehen. Die Runde ist bewusst klein — damit jeder jeden kennenlernt.</p>
-        </article>
-      </div>
-
-      <!-- Ablauf (ohne fixe Uhrzeiten – finale Agenda kommt über Luma) -->
-      <div class="flow reveal">
-        <div class="flow__item"><span class="flow__num">1</span><h4 data-en="Reception &amp; Aperitif">Empfang &amp; Aperitif</h4><p data-en="Arrive, first conversations.">Ankommen, erste Gespräche.</p></div>
-        <div class="flow__item"><span class="flow__num">2</span><h4 data-en="Dinner">Dinner</h4><p data-en="Multi-course menu at the long table.">Mehrgängiges Menü an der langen Tafel.</p></div>
-        <div class="flow__item"><span class="flow__num">3</span><h4 data-en="Keynotes">Keynotes</h4><p data-en="Short impulses between courses.">Kurze Impulse zwischen den Gängen.</p></div>
-        <div class="flow__item"><span class="flow__num">4</span><h4 data-en="Open Networking">Open Networking</h4><p data-en="The evening winds down — open &amp; relaxed.">Der Abend klingt aus — offen &amp; entspannt.</p></div>
+      <!-- Ablaufplan als visuelle Timeline -->
+      <div class="schedule reveal">
+        <div class="schedule__head">
+          <span class="eyebrow" data-en="The Schedule">Der Ablauf</span>
+          <h3 class="schedule__title" data-en="How the evening unfolds">So läuft der Abend</h3>
+        </div>
+        <ol class="timeline">
+          <li class="timeline__item"><span class="timeline__time">18:30</span><span class="timeline__point" data-en="Aperitif, welcome &amp; curated introductions">Aperitif, Empfang &amp; kuratierte Introductions</span></li>
+          <li class="timeline__item"><span class="timeline__time">19:10</span><span class="timeline__point" data-en="Seating, four-minute welcome by Markus">Platznehmen, vierminütige Begrüßung durch Markus</span></li>
+          <li class="timeline__item"><span class="timeline__time">19:15</span><span class="timeline__point" data-en="First course">Erster Gang</span></li>
+          <li class="timeline__item"><span class="timeline__time">19:40</span><span class="timeline__point" data-en="Impulse 1: external brand leader, max. eight minutes">Impuls 1: externer Brand Leader, max. acht Minuten</span></li>
+          <li class="timeline__item"><span class="timeline__time">19:50</span><span class="timeline__point" data-en="Second course &amp; moderated table question">Zweiter Gang &amp; moderierte Tischfrage</span></li>
+          <li class="timeline__item"><span class="timeline__time">20:30</span><span class="timeline__point" data-en="Main course">Hauptgang</span></li>
+          <li class="timeline__item"><span class="timeline__time">21:05</span><span class="timeline__point" data-en="Impulse 2: WePush insight, max. seven minutes">Impuls 2: WePush-Insight, max. sieben Minuten</span></li>
+          <li class="timeline__item"><span class="timeline__time">21:15</span><span class="timeline__point" data-en="Dessert &amp; open discussion">Dessert &amp; freie Diskussion</span></li>
+          <li class="timeline__item"><span class="timeline__time">21:50</span><span class="timeline__point" data-en="Two-minute closing — no sales CTA from the stage">Zweiminütiger Abschluss, kein Sales-CTA von der Bühne</span></li>
+          <li class="timeline__item"><span class="timeline__time">22:00</span><span class="timeline__point" data-en="Drinks &amp; open networking">Drinks &amp; offenes Networking</span></li>
+          <li class="timeline__item timeline__item--end"><span class="timeline__time">22:30</span><span class="timeline__point" data-en="Official end">Offizielles Ende</span></li>
+        </ol>
       </div>
     </div>
   </section>
