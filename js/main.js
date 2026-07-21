@@ -1,8 +1,8 @@
-/* THE 30 — kleine Interaktionen: Nav-Hintergrund beim Scrollen + Reveal-Animationen */
+/* THE 30 — Nav-Verhalten, Reveal-Animationen und DE/EN-Sprachumschalter */
 (function () {
   "use strict";
 
-  // Nav bekommt beim Scrollen einen Hintergrund
+  /* ---- Nav bekommt beim Scrollen einen Hintergrund ---- */
   const nav = document.getElementById("nav");
   const onScroll = () => {
     if (window.scrollY > 40) nav.classList.add("scrolled");
@@ -11,7 +11,34 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
-  // Sanftes Einblenden der Sektionen beim Scrollen
+  /* ---- Sprachumschalter DE / EN ----
+     Jedes übersetzbare Element trägt data-en mit der englischen Fassung.
+     Die deutsche Originalfassung wird beim Laden gesichert. */
+  const LANG_KEY = "the30-lang";
+  const nodes = Array.prototype.slice.call(document.querySelectorAll("[data-en]"));
+  nodes.forEach((el) => { el.dataset.de = el.innerHTML; });
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+    nodes.forEach((el) => {
+      el.innerHTML = lang === "en" ? el.dataset.en : el.dataset.de;
+    });
+    document.querySelectorAll(".langswitch__btn").forEach((b) => {
+      b.classList.toggle("is-active", b.dataset.lang === lang);
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+    });
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+  }
+
+  document.querySelectorAll(".langswitch__btn").forEach((b) => {
+    b.addEventListener("click", () => setLang(b.dataset.lang));
+  });
+
+  let saved = "de";
+  try { saved = localStorage.getItem(LANG_KEY) || "de"; } catch (e) {}
+  if (saved === "en") setLang("en");
+
+  /* ---- Sanftes Einblenden der Sektionen beim Scrollen ---- */
   const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
     items.forEach((el) => el.classList.add("is-visible"));
