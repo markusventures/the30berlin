@@ -207,7 +207,7 @@ a { color: inherit; text-decoration: none; }
 .act__role { display: inline-block; margin: 1.5rem 1.8rem 0; font-weight: 700; font-size: 0.75rem;
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
 .act__name { margin: 0.5rem 1.8rem 0.5rem; font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; }
-.act__text { margin: 0 1.8rem; color: var(--ink-soft); font-size: 1rem; }
+.act__text { margin: 0 1.8rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.55; }
 .act__links { display: flex; gap: 0.5rem; margin: 1.2rem 1.8rem 0; }
 .act__link { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
   border: 1px solid var(--line); color: var(--ink);
