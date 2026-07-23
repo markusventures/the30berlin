@@ -208,8 +208,11 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
 .act__name { margin: 0.5rem 1.8rem 0.5rem; font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; }
 .act__text { margin: 0 1.8rem; color: var(--ink-soft); font-size: 1rem; }
-.act__credit { margin: 1rem 1.8rem 0; font-size: 0.72rem; color: var(--ink-soft); opacity: 0.7; }
-.act__credit a { text-decoration: underline; }
+.act__links { display: flex; gap: 0.5rem; margin: 1.2rem 1.8rem 0; }
+.act__link { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--line); color: var(--ink);
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.act__link:hover { background: var(--ink); color: #fff; border-color: var(--ink); transform: translateY(-2px); }
 
 /* ---------- Themes (peppige Karten) ---------- */
 /* Ganz subtiles Creator-Marketing-Motiv im Hintergrund */
