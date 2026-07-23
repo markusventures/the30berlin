@@ -299,7 +299,7 @@ a { color: inherit; text-decoration: none; }
   background-image: radial-gradient(var(--line) 1px, transparent 1px); background-size: 16px 16px; }
 
 /* ---------- Host ---------- */
-.host__grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
+.host__grid { display: grid; grid-template-columns: 0.72fr 1.28fr; gap: clamp(1.5rem, 4vw, 3.4rem); align-items: stretch; max-width: 1300px; }
 .host__media { display: flex; }
 .host-photo { position: relative; width: 100%; max-width: 360px; }
 .host-photo > img { display: block; width: 100%; height: 100%; min-height: 100%; object-fit: cover; border-radius: var(--radius);
@@ -307,8 +307,13 @@ a { color: inherit; text-decoration: none; }
 /* Text-Spalte: oben Inhalt, Logo-Bar unten → beide Spalten oben & unten bündig */
 .host__text { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
 .host-brands { border-top: 1px solid var(--line); padding-top: 1.6rem; }
-.host-brands .trustbar__label { text-align: left; margin-bottom: 1.2rem; }
-.host-brands .trustbar__logos { justify-content: flex-start; gap: 1.1rem 1.6rem; }
+.host-brands .trustbar__label { text-align: left; margin-bottom: 1.3rem; }
+/* alle Logos in EINER Reihe, gleichmäßig verteilt */
+.host-brands .trustbar__logos { flex-wrap: nowrap; justify-content: space-between; gap: 0.7rem; }
+.host-brands .brand-img { max-height: 22px; max-width: 66px; }
+.host-brands .brand-img--lg { max-height: 26px; max-width: 78px; }
+.host-brands .brand-img--sm { max-height: 15px; max-width: 58px; }
+.host-brands .brand-img--xs { max-height: 12px; max-width: 46px; }
 .host-photo__logo { position: absolute; top: 1rem; left: 1rem; background: #fff; padding: 0.5rem 0.8rem;
   border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.22); display: flex; }
 .host-photo__logo img { height: 16px; width: auto; display: block; }
@@ -377,6 +382,11 @@ a { color: inherit; text-decoration: none; }
   .host-photo > img { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
   .host__text { display: block; }
   .host-brands { margin-top: 2rem; }
+  .host-brands .trustbar__logos { flex-wrap: wrap; justify-content: flex-start; gap: 0.9rem 1.4rem; }
+  .host-brands .brand-img { max-height: 26px; max-width: 84px; }
+  .host-brands .brand-img--lg { max-height: 32px; max-width: 100px; }
+  .host-brands .brand-img--sm { max-height: 18px; max-width: 72px; }
+  .host-brands .brand-img--xs { max-height: 14px; max-width: 56px; }
   .hero { min-height: 0; padding: 8rem var(--gutter) 4rem; }
   .hero__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero__inner { max-width: 620px; }
