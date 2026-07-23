@@ -193,6 +193,24 @@ a { color: inherit; text-decoration: none; }
   object-fit: contain; background: #0d0d0f;
   border-radius: 24px; box-shadow: 0 30px 70px rgba(20,20,20,0.20); }
 
+/* ---------- Line-up (Musik & Keynote) ---------- */
+.lineup__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-top: 2.8rem; }
+.act { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+  padding-bottom: 1.8rem; transition: transform .3s ease, box-shadow .3s ease; }
+.act:hover { transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,20,20,0.09); }
+.act__media { margin: 0; aspect-ratio: 16 / 10; overflow: hidden; }
+.act__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.act__media--ph { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.3rem;
+  background: var(--bg-soft); color: var(--ink-soft); border-bottom: 1px dashed var(--line); }
+.act__media--ph span { font-weight: 600; }
+.act__media--ph small { font-size: 0.78rem; opacity: 0.6; }
+.act__role { display: inline-block; margin: 1.5rem 1.8rem 0; font-weight: 700; font-size: 0.75rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
+.act__name { margin: 0.5rem 1.8rem 0.5rem; font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; }
+.act__text { margin: 0 1.8rem; color: var(--ink-soft); font-size: 1rem; }
+.act__credit { margin: 1rem 1.8rem 0; font-size: 0.72rem; color: var(--ink-soft); opacity: 0.7; }
+.act__credit a { text-decoration: underline; }
+
 /* ---------- Themes (peppige Karten) ---------- */
 /* Ganz subtiles Creator-Marketing-Motiv im Hintergrund */
 .themes { position: relative; overflow: hidden; }
@@ -399,7 +417,7 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
-  .cards, .flow, .grid-gallery, .mood, .themes__grid { grid-template-columns: 1fr; }
+  .cards, .flow, .grid-gallery, .mood, .themes__grid, .lineup__grid { grid-template-columns: 1fr; }
   .grid-gallery { grid-template-columns: 1fr 1fr; }
   .mood__tile { aspect-ratio: 3 / 2; }
   .timeline::before { left: 62px; }
