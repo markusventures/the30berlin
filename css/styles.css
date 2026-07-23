@@ -169,11 +169,17 @@ a { color: inherit; text-decoration: none; }
 /* Highlight-Satz unter Section 2 — weißes Panel mit grauem Rand, erhabener Effekt */
 /* Highlight sitzt jetzt unter den Themen, in eigener Section (breiter als .container → Satz passt in 1 Zeile) */
 .highlight-section { padding: clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(4.5rem, 10vw, 8rem); }
-.vision__highlight { margin: 0; max-width: none; text-align: center;
+.vision__highlight { position: relative; overflow: hidden; margin: 0; max-width: none; text-align: center;
   background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 26px;
   padding: clamp(2.2rem, 5vw, 3.4rem) clamp(1.6rem, 4vw, 3rem);
   box-shadow: 0 22px 55px rgba(20,20,20,0.10);
   transition: transform .3s ease, box-shadow .3s ease; }
+/* warmes Bokeh an den Rändern, blendet zur Mitte aus → Text bleibt klar */
+.vision__highlight::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: url("../assets/themes-bg.jpg") center / cover; opacity: 0.13;
+  -webkit-mask-image: linear-gradient(90deg, #000, transparent 34%, transparent 66%, #000);
+          mask-image: linear-gradient(90deg, #000, transparent 34%, transparent 66%, #000); }
+.vision__highlight > * { position: relative; z-index: 1; }
 .vision__highlight:hover { transform: translateY(-6px); box-shadow: 0 32px 66px rgba(20,20,20,0.13); }
 .vision__badge { display: inline-block; margin-bottom: 1.4rem; }
 .vision__badge svg { display: block; border-radius: 16px; box-shadow: 0 10px 24px rgba(20,20,20,0.20); }
