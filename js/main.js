@@ -83,7 +83,7 @@
       imgs.forEach((img, k) => img.classList.toggle("is-active", k === index));
       dotEls.forEach((d, k) => d.classList.toggle("is-active", k === index));
     }
-    function start() { if (!reduceMotion) timer = setInterval(() => show(index + 1), 4000); }
+    function start() { if (!reduceMotion) timer = setInterval(() => show(index + 1), 6000); }
     function stop() { clearInterval(timer); }
     function restart() { stop(); start(); }
 

@@ -204,6 +204,14 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-soft); }
 .lineup__label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .lineup__grid--two { grid-template-columns: repeat(2, 1fr); }
+/* Karte direkt im Block (ohne Grid) braucht denselben Abstand zur Trennlinie */
+.lineup__block > .act { margin-top: 1.3rem; }
+/* Kleines, dezentes Marken-Logo unter dem Namen */
+.act__brand { margin: 0 1.8rem 0.85rem; }
+.act__brand img { display: block; width: auto; height: 15px; max-width: 132px;
+  opacity: 0.4; filter: grayscale(1);
+  transition: opacity .25s ease, filter .25s ease; }
+.act:hover .act__brand img { opacity: 0.72; filter: grayscale(0); }
 /* Bild-Slideshow innerhalb einer Karte (auto alle 4s, Dots, Swipe) */
 .slider { position: relative; width: 100%; height: 100%; overflow: hidden;
   background: var(--bg-soft); touch-action: pan-y; }
