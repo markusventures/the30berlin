@@ -56,6 +56,54 @@
   try { saved = localStorage.getItem(LANG_KEY) || "de"; } catch (e) {}
   if (saved === "en") setLang("en");
 
+  /* ---- Bild-Slideshows (Line-up): Autoplay alle 4s, Dots, Swipe ---- */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll("[data-slider]").forEach((slider) => {
+    const imgs = Array.prototype.slice.call(slider.querySelectorAll(".slider__img"));
+    if (imgs.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+
+    const dots = document.createElement("div");
+    dots.className = "slider__dots";
+    imgs.forEach((img, n) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "slider__dot" + (n === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", "Bild " + (n + 1) + " von " + imgs.length);
+      dot.addEventListener("click", () => { show(n); restart(); });
+      dots.appendChild(dot);
+    });
+    slider.appendChild(dots);
+    const dotEls = Array.prototype.slice.call(dots.children);
+
+    function show(n) {
+      index = (n + imgs.length) % imgs.length;
+      imgs.forEach((img, k) => img.classList.toggle("is-active", k === index));
+      dotEls.forEach((d, k) => d.classList.toggle("is-active", k === index));
+    }
+    function start() { if (!reduceMotion) timer = setInterval(() => show(index + 1), 4000); }
+    function stop() { clearInterval(timer); }
+    function restart() { stop(); start(); }
+
+    /* Swipe auf Touch-Geräten */
+    let startX = null;
+    slider.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      stop();
+    }, { passive: true });
+    slider.addEventListener("touchend", (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+      startX = null;
+      start();
+    });
+
+    start();
+  });
+
   /* ---- Sanftes Einblenden der Sektionen beim Scrollen ---- */
   const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
