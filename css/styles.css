@@ -67,8 +67,6 @@ a { color: inherit; text-decoration: none; }
 }
 .eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--ink-soft); opacity: .5; }
 .eyebrow--dot::before { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); opacity: 1; }
-/* Datumszeile im Hero bleibt immer einzeilig */
-.hero .eyebrow { white-space: nowrap; }
 
 /* ---------- Buttons & Links ---------- */
 .btn {
@@ -374,12 +372,13 @@ a { color: inherit; text-decoration: none; }
 .host__text { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
 .host-brands { border-top: 1px solid var(--line); padding-top: 1.6rem; }
 .host-brands .trustbar__label { text-align: left; margin-bottom: 1.3rem; }
-/* alle Logos in EINER Reihe, gleichmäßig verteilt */
-.host-brands .trustbar__logos { flex-wrap: nowrap; justify-content: space-between; gap: 0.5rem; }
-.host-brands .brand-img { max-height: 20px; max-width: 58px; }
-.host-brands .brand-img--lg { max-height: 23px; max-width: 68px; }
-.host-brands .brand-img--sm { max-height: 13px; max-width: 50px; }
-.host-brands .brand-img--xs { max-height: 11px; max-width: 40px; }
+/* alle 10 Logos in EINER Reihe — Grid statt Flex, sonst wird das letzte abgeschnitten */
+.host-brands .trustbar__logos { display: grid; grid-template-columns: repeat(10, 1fr);
+  justify-items: center; align-items: center; gap: 0.5rem; }
+.host-brands .brand-img { max-height: 20px; max-width: 100%; }
+.host-brands .brand-img--lg { max-height: 23px; max-width: 100%; }
+.host-brands .brand-img--sm { max-height: 13px; max-width: 100%; }
+.host-brands .brand-img--xs { max-height: 11px; max-width: 100%; }
 /* Gymondo ist quadratisch → über Höhe etwas größer */
 .host-brands .brand-img[alt="Gymondo"] { max-height: 36px; max-width: 42px; }
 .host-photo__logo { position: absolute; top: 1rem; left: 1rem; background: #fff; padding: 0.5rem 0.8rem;
@@ -511,9 +510,8 @@ a { color: inherit; text-decoration: none; }
   /* Fließtext der Location-Sektion etwas kompakter */
   .location .lead { font-size: 1rem; line-height: 1.55; }
   .hero { padding-top: 7rem; }
-  /* Datumszeile muss in eine Reihe passen → engerer Satz, kleinerer Punkt */
-  .hero .eyebrow { font-size: clamp(0.55rem, 2.6vw, 0.72rem); letter-spacing: 0.035em; gap: 0.45em; }
-  .hero .eyebrow--dot::before { width: 6px; height: 6px; }
+  /* Anmelde-Sektion: Überschrift + Lead sind neben der Luma-Karte redundant */
+  .register .section__title, .register .lead { display: none; }
   .nav { padding-inline: 1.1rem; }
   .btn--nav { display: none; }
   .brand-img { max-height: 21px; max-width: 76px; }
