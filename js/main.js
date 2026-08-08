@@ -104,6 +104,27 @@
     start();
   });
 
+  /* ---- Videos starten, sobald sie im Blickfeld sind (auch auf Mobile) ---- */
+  const videos = document.querySelectorAll("video[autoplay]");
+  if (videos.length && "IntersectionObserver" in window) {
+    const vio = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const v = entry.target;
+          if (entry.isIntersecting) {
+            v.muted = true;            /* Pflicht, sonst blockt iOS/Safari das Abspielen */
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    videos.forEach((v) => vio.observe(v));
+  }
+
   /* ---- Sanftes Einblenden der Sektionen beim Scrollen ---- */
   const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {

@@ -62,11 +62,13 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Eyebrow ---------- */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.55em;
-  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  font-size: 0.74rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase;
   color: var(--ink-soft); margin-bottom: 1.3rem;
 }
 .eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--ink-soft); opacity: .5; }
 .eyebrow--dot::before { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); opacity: 1; }
+/* Datumszeile im Hero bleibt immer einzeilig */
+.hero .eyebrow { white-space: nowrap; }
 
 /* ---------- Buttons & Links ---------- */
 .btn {
@@ -142,17 +144,11 @@ a { color: inherit; text-decoration: none; }
 .hero__title { font-weight: 600; letter-spacing: -0.025em; line-height: 1.1;
   font-size: clamp(2.1rem, 4.4vw, 3.5rem); margin-bottom: 1.5rem; }
 .hero__lede { max-width: 48ch; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
-.hero__media { position: relative; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
-.hero__media img { display: block; width: 75%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+/* Bild füllt die Spalte und schließt oben/unten bündig mit der Textspalte ab */
+.hero__media { position: relative; display: flex; }
+.hero__media img { display: block; width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: cover;
   border-radius: 26px; box-shadow: 0 34px 80px rgba(20,20,20,0.24); }
-.hero__media .hero__meta { width: 75%; }
 .hero__cta { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2.4rem; }
-.hero__meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  width: 100%; margin-top: 1.6rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
-.hero__meta > div { display: flex; flex-direction: column; }
-.hero__meta-num { font-weight: 700; font-size: 1.45rem; letter-spacing: -0.02em; }
-.hero__meta-lbl { font-size: 0.85rem; color: var(--ink-soft); }
-.hero__meta-sep { width: 1px; height: 34px; background: var(--line); }
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(4.5rem, 10vw, 8.5rem) 0; position: relative; }
@@ -171,7 +167,7 @@ a { color: inherit; text-decoration: none; }
 .highlight-section { padding: clamp(0.5rem, 1.5vw, 1.5rem) 0 clamp(4.5rem, 10vw, 8rem); }
 .vision__highlight { position: relative; overflow: hidden; margin: 0; max-width: none; text-align: center;
   background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 26px;
-  padding: clamp(2.2rem, 5vw, 3.4rem) clamp(1.6rem, 4vw, 3rem);
+  padding: clamp(1.6rem, 3.4vw, 2.4rem) clamp(1.4rem, 3.4vw, 2.6rem);
   box-shadow: 0 22px 55px rgba(20,20,20,0.10);
   transition: transform .3s ease, box-shadow .3s ease; }
 /* warmes Bokeh an den Rändern, blendet zur Mitte aus → Text bleibt klar */
@@ -181,12 +177,14 @@ a { color: inherit; text-decoration: none; }
           mask-image: linear-gradient(90deg, #000, transparent 34%, transparent 66%, #000); }
 .vision__highlight > * { position: relative; z-index: 1; }
 .vision__highlight:hover { transform: translateY(-6px); box-shadow: 0 32px 66px rgba(20,20,20,0.13); }
-.vision__badge { display: inline-block; margin-bottom: 1.4rem; }
-.vision__badge svg { display: block; border-radius: 16px; box-shadow: 0 10px 24px rgba(20,20,20,0.20); }
+.vision__badge { display: inline-block; margin-bottom: 1.1rem; }
+/* drop-shadow folgt der abgerundeten Form des Logos — box-shadow zeichnete an den
+   unteren Ecken über die Rundung hinaus (sichtbare Kanten auf Mobile) */
+.vision__badge svg { display: block; filter: drop-shadow(0 8px 18px rgba(20,20,20,0.18)); }
 .vision__highlight-text { margin: 0; font-size: clamp(0.9rem, 1.35vw, 1.05rem); font-weight: 400;
   line-height: 1.6; color: var(--ink-soft); }
-.vision__punch { display: inline-block; margin-top: 1.2rem; font-weight: 800;
-  font-size: clamp(1.3rem, 2.5vw, 1.7rem); line-height: 1.35; letter-spacing: -0.01em; color: var(--ink); }
+.vision__punch { display: inline-block; margin-top: 0.85rem; font-weight: 800;
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem); line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
 .vision__media { display: flex; justify-content: center; }
 /* Video vollständig zeigen, keine abgeschnittenen Ränder; feste Ratio → nie leerer Kasten */
 .vision__media video { display: block; width: 100%; height: auto; aspect-ratio: 1080 / 904;
@@ -206,9 +204,9 @@ a { color: inherit; text-decoration: none; }
 .lineup__grid--two { grid-template-columns: repeat(2, 1fr); }
 /* Karte direkt im Block (ohne Grid) braucht denselben Abstand zur Trennlinie */
 .lineup__block > .act { margin-top: 1.3rem; }
-/* Kleines, dezentes Marken-Logo unter dem Namen */
-.act__brand { margin: 0 1.8rem 0.85rem; }
-.act__brand img { display: block; width: auto; height: 15px; max-width: 132px;
+/* Kleines, dezentes Marken-Logo — rechts in der Reihe der Social-Icons */
+.act__brand { margin-left: auto; display: flex; align-items: center; }
+.act__brand img { display: block; width: auto; height: 15px; max-width: 120px;
   opacity: 0.4; filter: grayscale(1);
   transition: opacity .25s ease, filter .25s ease; }
 .act:hover .act__brand img { opacity: 0.72; filter: grayscale(0); }
@@ -255,7 +253,7 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); }
 .act__name { margin: 0.5rem 1.8rem 0.5rem; font-weight: 600; font-size: 1.5rem; letter-spacing: -0.01em; }
 .act__text { margin: 0 1.8rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.55; }
-.act__links { display: flex; gap: 0.5rem; margin: 1.2rem 1.8rem 0; }
+.act__links { display: flex; align-items: center; gap: 0.5rem; margin: 1.2rem 1.8rem 0; }
 .act__link { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%;
   border: 1px solid var(--line); color: var(--ink);
   transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
@@ -295,7 +293,7 @@ a { color: inherit; text-decoration: none; }
 .mood__tile:hover img { transform: scale(1.06); filter: grayscale(0.15) brightness(0.72) contrast(1.05); }
 
 /* Überschrift „Drei Zutaten…" in einer Zeile */
-.experience__title { max-width: none; white-space: nowrap; }
+.experience__title { max-width: none; white-space: nowrap; font-weight: 500; letter-spacing: -0.015em; }
 
 /* ---------- Ablaufplan / Timeline ---------- */
 .schedule { margin-top: clamp(3.5rem, 7vw, 6rem); }
@@ -371,11 +369,11 @@ a { color: inherit; text-decoration: none; }
 .host-brands { border-top: 1px solid var(--line); padding-top: 1.6rem; }
 .host-brands .trustbar__label { text-align: left; margin-bottom: 1.3rem; }
 /* alle Logos in EINER Reihe, gleichmäßig verteilt */
-.host-brands .trustbar__logos { flex-wrap: nowrap; justify-content: space-between; gap: 0.7rem; }
-.host-brands .brand-img { max-height: 22px; max-width: 66px; }
-.host-brands .brand-img--lg { max-height: 26px; max-width: 78px; }
-.host-brands .brand-img--sm { max-height: 15px; max-width: 58px; }
-.host-brands .brand-img--xs { max-height: 12px; max-width: 46px; }
+.host-brands .trustbar__logos { flex-wrap: nowrap; justify-content: space-between; gap: 0.5rem; }
+.host-brands .brand-img { max-height: 20px; max-width: 58px; }
+.host-brands .brand-img--lg { max-height: 23px; max-width: 68px; }
+.host-brands .brand-img--sm { max-height: 13px; max-width: 50px; }
+.host-brands .brand-img--xs { max-height: 11px; max-width: 40px; }
 /* Gymondo ist quadratisch → über Höhe etwas größer */
 .host-brands .brand-img[alt="Gymondo"] { max-height: 36px; max-width: 42px; }
 .host-photo__logo { position: absolute; top: 1rem; left: 1rem; background: #fff; padding: 0.5rem 0.8rem;
@@ -415,6 +413,20 @@ a { color: inherit; text-decoration: none; }
 .register__inner .lead { margin-inline: auto; }
 .luma-embed { width: 100%; max-width: 600px; margin: 2.6rem auto 0; }
 .luma-embed iframe { width: 100%; height: 760px; display: block; border-radius: 12px; box-shadow: 0 22px 55px rgba(20,20,20,0.10); }
+/* Kompakte Anmelde-Karte — ersetzt das Embed auf Mobile (kein Scrollen im iframe) */
+.luma-card { display: none; }
+@media (max-width: 560px) {
+  .luma-embed { display: none; }
+  .luma-card { display: flex; flex-direction: column; gap: 0.4rem; text-align: center;
+    margin: 2rem auto 0; max-width: 420px; padding: 1.6rem 1.4rem 1.5rem;
+    background: #fff; border: 1px solid var(--line); border-radius: 18px;
+    box-shadow: 0 18px 44px rgba(20,20,20,0.10); }
+  .luma-card__date { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--primary); }
+  .luma-card__title { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+  .luma-card__btn { margin-top: 0.9rem; padding: 0.85rem 1.2rem; border-radius: 100px;
+    background: var(--ink); color: #fff; font-size: 0.95rem; font-weight: 600; }
+}
 
 /* ---------- Footer ---------- */
 .footer { padding-top: 1rem; padding-bottom: 2rem; }
@@ -451,18 +463,21 @@ a { color: inherit; text-decoration: none; }
   .host-photo { max-width: 300px; }
   .host-photo > img { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
   .host__text { display: block; }
-  .host-brands { margin-top: 2rem; }
-  .host-brands .trustbar__logos { flex-wrap: wrap; justify-content: flex-start; gap: 0.9rem 1.4rem; }
-  .host-brands .brand-img { max-height: 26px; max-width: 84px; }
-  .host-brands .brand-img--lg { max-height: 32px; max-width: 100px; }
-  .host-brands .brand-img--sm { max-height: 18px; max-width: 72px; }
-  .host-brands .brand-img--xs { max-height: 10px; max-width: 40px; }
-  .host-brands .brand-img[alt="Gymondo"] { max-height: 48px; max-width: 54px; }
+  /* mehr Luft über dem Label, dann 10 Logos als 2 bündige Reihen à 5 */
+  .host-brands { margin-top: 3.2rem; padding-top: 2.4rem; }
+  .host-brands .trustbar__label { margin-bottom: 1.6rem; }
+  .host-brands .trustbar__logos { display: grid; grid-template-columns: repeat(5, 1fr);
+    justify-items: center; align-items: center; gap: 1.5rem 0.9rem; }
+  .host-brands .brand-img { max-height: 24px; max-width: 100%; }
+  .host-brands .brand-img--lg { max-height: 28px; max-width: 100%; }
+  .host-brands .brand-img--sm { max-height: 16px; max-width: 100%; }
+  .host-brands .brand-img--xs { max-height: 11px; max-width: 100%; }
+  .host-brands .brand-img[alt="Gymondo"] { max-height: 44px; }
   .hero { min-height: 0; padding: 8rem var(--gutter) 4rem; }
   .hero__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero__inner { max-width: 620px; }
   .hero__media { max-width: 480px; align-items: stretch; }
-  .hero__media img, .hero__media .hero__meta { width: 100%; }
+  .hero__media img { width: 100%; height: auto; }
   .experience__title, .themes__title { white-space: normal; }
 }
 @media (max-width: 560px) {
@@ -475,8 +490,9 @@ a { color: inherit; text-decoration: none; }
   .timeline__item::before { left: 58px; }
   .timeline__point { font-size: 0.98rem; }
   .hero { padding-top: 7rem; }
-  .hero__meta-sep { display: none; }
-  .hero__meta { gap: 1.4rem; }
+  /* Datumszeile muss in eine Reihe passen → engerer Satz, kleinerer Punkt */
+  .hero .eyebrow { font-size: clamp(0.55rem, 2.6vw, 0.72rem); letter-spacing: 0.035em; gap: 0.45em; }
+  .hero .eyebrow--dot::before { width: 6px; height: 6px; }
   .nav { padding-inline: 1.1rem; }
   .btn--nav { display: none; }
   .brand-img { max-height: 21px; max-width: 76px; }
