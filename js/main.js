@@ -104,6 +104,49 @@
     start();
   });
 
+  /* ---- Mood-Slideshow auf Mobile: horizontales Snap-Scrollen, Dots, Autoplay ---- */
+  const moodMq = window.matchMedia("(max-width: 560px)");
+  document.querySelectorAll("[data-mood-slider]").forEach((track) => {
+    const tiles = Array.prototype.slice.call(track.children);
+    if (tiles.length < 2) return;
+
+    const dots = document.createElement("div");
+    dots.className = "mood-dots";
+    tiles.forEach((_, n) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "mood-dot" + (n === 0 ? " is-active" : "");
+      dot.setAttribute("aria-label", "Bild " + (n + 1) + " von " + tiles.length);
+      dot.addEventListener("click", () => { goTo(n); restart(); });
+      dots.appendChild(dot);
+    });
+    track.parentNode.insertBefore(dots, track.nextSibling);
+    const dotEls = Array.prototype.slice.call(dots.children);
+
+    const wait = parseInt(track.dataset.interval, 10) || 4000;
+    let timer = null;
+
+    function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+    function goTo(n) { track.scrollTo({ left: n * track.clientWidth, behavior: "smooth" }); }
+    function markDots() {
+      const i = current();
+      dotEls.forEach((d, k) => d.classList.toggle("is-active", k === i));
+    }
+    function start() {
+      if (reduceMotion || !moodMq.matches) return;
+      timer = setInterval(() => goTo((current() + 1) % tiles.length), wait);
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    function restart() { stop(); start(); }
+
+    track.addEventListener("scroll", markDots, { passive: true });
+    /* Beim manuellen Wischen pausieren, danach wieder anlaufen */
+    track.addEventListener("touchstart", stop, { passive: true });
+    track.addEventListener("touchend", restart, { passive: true });
+    moodMq.addEventListener("change", () => { stop(); goTo(0); start(); });
+    start();
+  });
+
   /* ---- Videos starten, sobald sie im Blickfeld sind (auch auf Mobile) ---- */
   const videos = document.querySelectorAll("video[autoplay]");
   if (videos.length && "IntersectionObserver" in window) {
