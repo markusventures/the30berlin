@@ -149,6 +149,28 @@ a { color: inherit; text-decoration: none; }
   border-radius: 26px; box-shadow: 0 34px 80px rgba(20,20,20,0.24); }
 .hero__cta { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem; }
 
+/* ---------- Zusagen / Logo-Bar (schließt den Header ab) ---------- */
+.approvals { padding: 0 var(--gutter) clamp(3rem, 6vw, 4.5rem); }
+.approvals .container { border-top: 1px solid var(--line); padding-top: clamp(1.8rem, 3.5vw, 2.6rem); }
+.approvals__label { text-align: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em;
+  text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.8rem; }
+.approvals__logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: clamp(1.1rem, 2.4vw, 1.6rem) clamp(0.55rem, 1.5vw, 1.2rem); }
+/* Der Link ist nur Träger — die Graustufen-Optik kommt von .brand-img */
+.approvals__item { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
+.approvals__item:focus-visible { outline: 2px solid var(--primary); outline-offset: 6px; border-radius: 4px; }
+/* Eigene, kleinere Staffelung als in der WePush-Trustbar: alle 12 Marken
+   sollen auf dem Desktop in EINE Zeile passen. */
+.approvals .brand-img { max-height: 22px; max-width: 88px; }
+.approvals .brand-img--sm { max-height: 15px; max-width: 64px; }
+/* kompakte, kastenförmige Marke (N26) → über die Höhe skalieren */
+.approvals .brand-img--box { max-height: 22px; max-width: 34px; }
+/* gestapelte Wortmarke (Sunday Natural: Icon über Text) → über die Höhe ausgleichen */
+.approvals .brand-img--stack { max-height: 28px; max-width: 70px; }
+/* dünne Outline-Wortmarke → verschwindet sonst neben den flächigen Logos */
+.approvals .brand-img[alt="Dr. Wolff Group"]:not(:hover) { opacity: 0.72; }
+.approvals__more { text-align: center; margin-top: 1.6rem; font-size: 0.9rem; color: var(--ink-soft); }
+
 /* ---------- Sections ---------- */
 .section { padding: clamp(4.5rem, 10vw, 8.5rem) 0; position: relative; }
 .section__title { font-weight: 600; letter-spacing: -0.02em; line-height: 1.18; font-size: clamp(1.7rem, 3.8vw, 2.7rem); max-width: 22ch; }
@@ -490,6 +512,14 @@ a { color: inherit; text-decoration: none; }
   .host-brands .brand-img--sm { max-height: 16px; max-width: 100%; }
   .host-brands .brand-img--xs { max-height: 11px; max-width: 100%; }
   .host-brands .brand-img[alt="Gymondo"] { max-height: 44px; }
+  /* Zusagen-Bar: ab Tablet festes 6-Spalten-Raster → saubere 2 Zeilen
+     statt ausgefranstem Flex-Umbruch */
+  .approvals__logos { display: grid; grid-template-columns: repeat(6, 1fr);
+    justify-items: center; align-items: center; gap: 1.4rem 0.8rem; }
+  .approvals .brand-img { max-height: 20px; max-width: 100%; }
+  .approvals .brand-img--sm { max-height: 14px; max-width: 100%; }
+  .approvals .brand-img--box { max-height: 20px; max-width: 100%; }
+  .approvals .brand-img--stack { max-height: 26px; max-width: 100%; }
   .hero { min-height: 0; padding: 8rem var(--gutter) 4rem; }
   .hero__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero__inner { max-width: 620px; }
@@ -527,4 +557,11 @@ a { color: inherit; text-decoration: none; }
   .nav { padding-inline: 1.1rem; }
   .btn--nav { display: none; }
   .brand-img { max-height: 21px; max-width: 76px; }
+  /* Zusagen-Bar auf Mobile: gleiche 6 Spalten, nur kleiner → 2 Zeilen à 6 Logos */
+  .approvals__logos { gap: 1.1rem 0.45rem; }
+  .approvals .brand-img { max-height: 15px; }
+  .approvals .brand-img--sm { max-height: 12px; }
+  .approvals .brand-img--box { max-height: 16px; }
+  .approvals .brand-img--stack { max-height: 22px; }
+  .approvals__label { font-size: 0.66rem; margin-bottom: 1.4rem; }
 }
