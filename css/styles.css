@@ -130,7 +130,7 @@ a { color: inherit; text-decoration: none; }
 .brand-img--gym { max-height: 66px; max-width: 80px; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100vh; min-height: 100svh;
+.hero { position: relative; min-height: 82vh; min-height: 82svh;
   display: flex; align-items: center; padding: 9rem var(--gutter) 2.5rem; overflow: hidden; }
 .hero__grid-lines { position: absolute; inset: 0; z-index: 0;
   background-image: radial-gradient(60% 50% at 50% 0%, rgba(254,56,66,0.06), transparent 60%); }
