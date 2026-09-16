@@ -130,7 +130,9 @@
       imgs.forEach((img, k) => img.classList.toggle("is-active", k === index));
       dotEls.forEach((d, k) => d.classList.toggle("is-active", k === index));
     }
-    function start() { if (!reduceMotion) timer = setInterval(() => show(index + 1), 6000); }
+    /* Intervall pro Slider: der Hero läuft schneller als das Line-up */
+    const interval = parseInt(slider.dataset.interval, 10) || 6000;
+    function start() { if (!reduceMotion) timer = setInterval(() => show(index + 1), interval); }
     function stop() { clearInterval(timer); }
     function restart() { stop(); start(); }
 
