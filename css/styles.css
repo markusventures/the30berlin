@@ -145,8 +145,10 @@ a { color: inherit; text-decoration: none; }
 .hero__lede { max-width: 48ch; color: var(--ink-soft); font-size: clamp(1.05rem, 1.6vw, 1.2rem); }
 /* Bild rechts, oben bündig mit der Textspalte */
 .hero__media { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; }
-.hero__media img { display: block; width: 88%; height: auto; aspect-ratio: 1 / 1; object-fit: cover;
+.hero__media img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover;
   border-radius: 26px; box-shadow: 0 34px 80px rgba(20,20,20,0.24); }
+.hero__status { margin-top: 1.1rem; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft); }
 .hero__cta { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem; }
 
 /* ---------- Zusagen / Logo-Bar (schließt den Header ab) ---------- */
@@ -154,21 +156,60 @@ a { color: inherit; text-decoration: none; }
 .approvals .container { border-top: 1px solid var(--line); padding-top: clamp(1.8rem, 3.5vw, 2.6rem); }
 .approvals__label { text-align: center; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--ink-soft); margin-bottom: 1.8rem; }
-.approvals__logos { --logo-gap: clamp(0.55rem, 1.5vw, 1.2rem);
+.approvals__logos { --logo-gap: clamp(0.5rem, 1.3vw, 1.1rem);
   display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
   gap: clamp(1.1rem, 2.4vw, 1.6rem) var(--logo-gap); }
 /* Der Link ist nur Träger — die Graustufen-Optik kommt von .brand-img */
 .approvals__item { display: inline-flex; align-items: center; justify-content: center; line-height: 0; }
 .approvals__item:focus-visible { outline: 2px solid var(--primary); outline-offset: 6px; border-radius: 4px; }
-/* Eigene, kleinere Staffelung als in der WePush-Trustbar: alle 11 Marken
+/* Eigene, kleinere Staffelung als in der WePush-Trustbar: alle 12 Marken
    sollen auf dem Desktop in EINE Zeile passen. */
-.approvals .brand-img { max-height: 23px; max-width: 92px; }
-.approvals .brand-img--sm { max-height: 16px; max-width: 68px; }
+.approvals .brand-img { max-height: 21px; max-width: 84px; }
+.approvals .brand-img--sm { max-height: 14px; max-width: 60px; }
 /* gestapelte Wortmarke (Sunday Natural: Icon über Text) → über die Höhe ausgleichen */
-.approvals .brand-img--stack { max-height: 29px; max-width: 73px; }
+.approvals .brand-img--stack { max-height: 26px; max-width: 65px; }
 /* dünne Outline-Wortmarke → verschwindet sonst neben den flächigen Logos */
 .approvals .brand-img[alt="Dr. Wolff Group"]:not(:hover) { opacity: 0.72; }
 .approvals__more { text-align: center; margin-top: 1.6rem; font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- Aftermovie ---------- */
+.aftermovie { background-color: var(--bg-soft); }
+.aftermovie__frame { margin-top: 2.4rem; border-radius: var(--radius); overflow: hidden;
+  background: var(--ink-2); box-shadow: 0 30px 70px rgba(20,20,20,0.18); }
+.aftermovie__frame video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  object-fit: cover; background: var(--ink-2); }
+
+
+/* ---------- Recap-Galerie (Masonry über CSS-Spalten) ---------- */
+.recap__grid { margin-top: 2.4rem; column-count: 3; column-gap: 1rem; }
+/* Kacheln sind Buttons (Lightbox) → Button-Optik komplett zurücksetzen */
+.recap__item { display: block; width: 100%; padding: 0; margin: 0 0 1rem; border: 0; cursor: zoom-in;
+  background: var(--bg-soft); border-radius: 14px; overflow: hidden; line-height: 0;
+  break-inside: avoid; -webkit-column-break-inside: avoid; }
+.recap__item img { width: 100%; height: auto; display: block;
+  transition: transform .45s ease, filter .45s ease; }
+.recap__item:hover img { transform: scale(1.04); filter: brightness(1.04); }
+.recap__item:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
+/* ---------- Lightbox ---------- */
+.lightbox { position: fixed; inset: 0; z-index: 200; display: none;
+  align-items: center; justify-content: center; padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(14,14,14,0.92); backdrop-filter: blur(6px); }
+.lightbox.is-open { display: flex; }
+.lightbox__img { max-width: 100%; max-height: 100%; width: auto; height: auto;
+  border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+.lightbox__btn { position: absolute; background: rgba(255,255,255,0.1); border: 0; color: #fff;
+  width: 46px; height: 46px; border-radius: 50%; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; font-size: 1.4rem; line-height: 1;
+  transition: background .2s ease; }
+.lightbox__btn:hover { background: rgba(255,255,255,0.22); }
+.lightbox__btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.lightbox__close { top: clamp(0.8rem, 3vw, 1.6rem); right: clamp(0.8rem, 3vw, 1.6rem); }
+.lightbox__prev { left: clamp(0.5rem, 2vw, 1.4rem); }
+.lightbox__next { right: clamp(0.5rem, 2vw, 1.4rem); }
+.lightbox__count { position: absolute; bottom: clamp(0.9rem, 3vw, 1.6rem); left: 50%;
+  transform: translateX(-50%); color: rgba(255,255,255,0.72); font-size: 0.82rem;
+  letter-spacing: 0.08em; }
 
 /* ---------- Sections ---------- */
 .section { padding: clamp(4.5rem, 10vw, 8.5rem) 0; position: relative; }
@@ -318,20 +359,6 @@ a { color: inherit; text-decoration: none; }
 /* Überschrift „Drei Zutaten…" in einer Zeile */
 .experience__title { max-width: none; white-space: nowrap; font-weight: 500; letter-spacing: -0.015em; }
 
-/* ---------- Ablaufplan / Timeline ---------- */
-.timeline__role { color: var(--ink-soft); }
-.schedule__note { margin-top: 2.6rem; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; }
-.schedule { margin-top: clamp(3.5rem, 7vw, 6rem); }
-.schedule__head { margin-bottom: 2.4rem; }
-.schedule__title { font-weight: 600; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -0.02em; margin-top: 0.3rem; }
-.timeline { list-style: none; position: relative; max-width: 720px; }
-.timeline::before { content: ""; position: absolute; top: 14px; bottom: 14px; left: 74px; width: 2px; background: var(--line); }
-.timeline__item { position: relative; display: grid; grid-template-columns: 58px 1fr; column-gap: 2.4rem; padding: 0.72rem 0; }
-.timeline__time { text-align: right; font-weight: 700; color: var(--primary); font-size: 0.98rem; line-height: 1.5; font-variant-numeric: tabular-nums; }
-.timeline__item::before { content: ""; position: absolute; left: 70px; top: 1.02rem; width: 11px; height: 11px; border-radius: 50%;
-  background: var(--primary); box-shadow: 0 0 0 4px var(--bg); }
-.timeline__item--end::before { background: var(--ink); }
-.timeline__point { font-size: 1.05rem; color: var(--ink); line-height: 1.5; }
 
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem; margin-top: 3rem; }
 .card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
@@ -448,8 +475,9 @@ a { color: inherit; text-decoration: none; }
   background: var(--primary); }
 .register__status + .lead { margin-top: 1.1rem; }
 
-.luma-embed { width: 100%; max-width: 600px; margin: 2.6rem auto 0; }
-.luma-embed iframe { width: 100%; height: 760px; display: block; border-radius: 12px; box-shadow: 0 22px 55px rgba(20,20,20,0.10); }
+.luma-embed { width: 100%; max-width: 600px; margin: 2.6rem auto 0;
+  display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
+.luma-embed__note { font-size: 0.82rem; color: var(--ink-soft); }
 /* Kompakte Anmelde-Karte — ersetzt das Embed auf Mobile (kein Scrollen im iframe) */
 .luma-card { display: none; }
 @media (max-width: 560px) {
@@ -522,6 +550,7 @@ a { color: inherit; text-decoration: none; }
   .approvals .brand-img { max-height: 20px; max-width: 100%; }
   .approvals .brand-img--sm { max-height: 14px; max-width: 100%; }
   .approvals .brand-img--stack { max-height: 26px; max-width: 100%; }
+  .recap__grid { column-count: 2; }
   .hero { min-height: 0; padding: 8rem var(--gutter) 4rem; }
   .hero__layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .hero__inner { max-width: 620px; }
@@ -544,19 +573,15 @@ a { color: inherit; text-decoration: none; }
   .mood-dot { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
     background: rgba(20,20,20,0.2); transition: background .25s ease, transform .25s ease; }
   .mood-dot.is-active { background: var(--ink); transform: scale(1.3); }
-  .timeline::before { left: 62px; }
-  .timeline__item { grid-template-columns: 48px 1fr; column-gap: 1.6rem; }
-  .timeline__item::before { left: 58px; }
-  .timeline__point { font-size: 0.98rem; }
   /* Rolle in eine eigene Zeile, damit der Name nicht mitten im Wort umbricht */
-  .timeline__role { display: block; font-size: 0.88rem; margin-top: 0.15rem; }
-  .schedule__note { margin-top: 3.2rem; font-size: 0.88rem; }
   /* Fließtext der Location-Sektion etwas kompakter */
   .location .lead { font-size: 1rem; line-height: 1.55; }
   .hero { padding-top: 7rem; }
   /* Anmelde-Sektion: Überschrift + Lead sind neben der Luma-Karte redundant */
   .register .section__title, .register .lead { display: none; }
   .nav { padding-inline: 1.1rem; }
+  .recap__grid { column-count: 2; column-gap: 0.6rem; }
+  .recap__item { margin-bottom: 0.6rem; border-radius: 10px; }
   .btn--nav { display: none; }
   .brand-img { max-height: 21px; max-width: 76px; }
   /* Zusagen-Bar auf Mobile: gleiche Sechstel, nur kleiner → 2 Zeilen (6 + 5).

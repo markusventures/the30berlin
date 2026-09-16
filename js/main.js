@@ -56,6 +56,53 @@
   try { saved = localStorage.getItem(LANG_KEY) || "de"; } catch (e) {}
   if (saved === "en") setLang("en");
 
+  /* ---- Lightbox für die Recap-Galerie ----
+     Die Kacheln sind Buttons mit data-lightbox = Pfad zur großen Fassung. */
+  const lbox = document.getElementById("lightbox");
+  if (lbox) {
+    const lbImg = document.getElementById("lightbox-img");
+    const lbCount = document.getElementById("lightbox-count");
+    const tiles = Array.prototype.slice.call(document.querySelectorAll("[data-lightbox]"));
+    let idx = 0;
+    let lastFocus = null;
+
+    function show(i) {
+      idx = (i + tiles.length) % tiles.length;
+      const tile = tiles[idx];
+      lbImg.src = tile.dataset.lightbox;
+      lbImg.alt = tile.querySelector("img") ? tile.querySelector("img").alt : "";
+      lbCount.textContent = (idx + 1) + " / " + tiles.length;
+    }
+    function open(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      lbox.hidden = false;
+      lbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      lbox.querySelector(".lightbox__close").focus();
+    }
+    function close() {
+      lbox.classList.remove("is-open");
+      lbox.hidden = true;
+      lbImg.src = "";
+      document.body.style.overflow = "";
+      if (lastFocus) lastFocus.focus();
+    }
+
+    tiles.forEach((t, i) => t.addEventListener("click", () => open(i)));
+    lbox.querySelector(".lightbox__close").addEventListener("click", close);
+    lbox.querySelector(".lightbox__prev").addEventListener("click", () => show(idx - 1));
+    lbox.querySelector(".lightbox__next").addEventListener("click", () => show(idx + 1));
+    // Klick auf den Hintergrund schließt, Klick aufs Bild nicht
+    lbox.addEventListener("click", (e) => { if (e.target === lbox) close(); });
+    document.addEventListener("keydown", (e) => {
+      if (lbox.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(idx - 1);
+      else if (e.key === "ArrowRight") show(idx + 1);
+    });
+  }
+
   /* ---- Bild-Slideshows (Line-up): Autoplay alle 4s, Dots, Swipe ---- */
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll("[data-slider]").forEach((slider) => {
