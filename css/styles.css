@@ -482,6 +482,15 @@ a { color: inherit; text-decoration: none; }
 .luma-embed { width: 100%; max-width: 600px; margin: 2.6rem auto 0;
   display: flex; flex-direction: column; align-items: center; gap: 0.9rem; }
 .luma-embed__note { font-size: 0.82rem; color: var(--ink-soft); }
+
+/* Luma injiziert checkout-button.css NACH unserem Stylesheet und stylt
+   .luma-checkout--button als Pille (border-radius:100px, padding:8px 16px).
+   Bei gleicher Spezifität gewinnt Luma — deshalb hier gezielt höher
+   gewichtet, sonst wird die Mobile-Karte zum Oval. */
+.register a.btn.luma-checkout--button { padding: 0.95em 2rem; border-radius: 100px; }
+.register a.luma-card.luma-checkout--button {
+  padding: 1.6rem 1.4rem 1.5rem; border-radius: 18px;
+  border: 1px solid var(--line); background: #fff; }
 /* Kompakte Anmelde-Karte — ersetzt das Embed auf Mobile (kein Scrollen im iframe) */
 .luma-card { display: none; }
 @media (max-width: 560px) {
