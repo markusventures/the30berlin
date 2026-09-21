@@ -387,7 +387,20 @@ a { color: inherit; text-decoration: none; }
 .flow__item p { color: var(--ink-soft); font-size: 0.92rem; }
 
 /* ---------- Location ---------- */
-.location__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.location__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: stretch; }
+/* Textspalte als Säule: der CTA wird nach unten geschoben und schließt
+   damit bündig mit der Unterkante des Bildes rechts ab. */
+.location__text { display: flex; flex-direction: column; }
+.location .section-cta { align-items: flex-start; text-align: left;
+  margin-top: auto; padding-top: clamp(1.6rem, 3vw, 2.4rem); }
+.location .section-cta__text { max-width: 38ch; }
+/* Bild wächst auf die Höhe der Textspalte, damit beide unten bündig enden.
+   Absolut positioniert, sonst bestimmt es die Zeilenhöhe mit und die
+   Textspalte läuft über. */
+.location__media { display: flex; }
+.location__media .secret-card { flex: 1; min-height: 0; }
+.location__media .secret-card img { position: absolute; inset: 0;
+  width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
 .location__addr { font-weight: 600; font-size: 1.1rem; margin-top: 0.9rem; }
 .location__date { margin: 1.8rem 0 0; font-weight: 600; color: var(--ink); }
 /* Secret-Location-Karte: moody Bild + dunkles Overlay + Badge */
@@ -549,6 +562,8 @@ a.btn.luma-checkout--button { padding: 0.95em 2rem; border-radius: 100px; }
   .act--wide .act__body { padding: 1.6rem 1.8rem 1.9rem; }
   .act--wide .act__name { font-size: 1.5rem; }
   .location__grid, .host__grid { grid-template-columns: 1fr; }
+  .location .section-cta { margin-top: 0; }
+  .location__media .secret-card img { position: static; aspect-ratio: 4 / 3; height: auto; }
   .hero__layout { max-width: 620px; }
   .hero__top { max-width: none; }
   .host-photo { max-width: 300px; }
