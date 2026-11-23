@@ -657,7 +657,7 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 .speaker__brand img { width: 148px; height: 64px; object-fit: contain; }
 .speaker__brand span { font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); max-width: 13ch; }
 .speaker__portrait { position: relative; height: 285px; overflow: hidden; background: var(--bg-soft); }
-.speaker__portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.speaker__portrait > img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .speaker__portrait figcaption { position: absolute; right: 10px; bottom: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,.58); color: #fff; font-size: .55rem; }
 .speaker__body { padding: 1.7rem; display: flex; flex: 1; flex-direction: column; }
 .speaker__role { font-size: .73rem; color: var(--primary-dark); font-weight: 600; }
