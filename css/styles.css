@@ -154,6 +154,50 @@ a { color: inherit; text-decoration: none; }
   border-radius: 0; box-shadow: none; }
 .hero__cta { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-top: 2rem; }
 
+/* Vol. 2: upcoming speakers and an invitation to the table. */
+section[id] { scroll-margin-top: 90px; }
+.hero__note { margin-top: 1rem; font-size: .75rem; color: var(--ink-soft); max-width: 42ch; }
+.hero__media { flex-direction: column; justify-content: flex-start; }
+.hero__caption { font-size: .73rem; color: var(--ink-soft); margin-top: 1rem; }
+.hero__cta .link-arrow { font-size: .8rem; }
+.speakers { background: var(--bg-soft); }
+.speakers .container, .dinner-format .container { max-width: 1240px; }
+.speakers .section__title { max-width: 28ch; }
+.speakers__intro { max-width: 60ch; margin-top: 1.4rem; }
+.speakers__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 2.8rem; }
+.speaker { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.speaker__brand { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.6rem; min-height: 104px; }
+.speaker__brand img { width: 148px; height: 64px; object-fit: contain; }
+.speaker__brand span { font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); max-width: 13ch; }
+.speaker__portrait { position: relative; height: 285px; overflow: hidden; background: var(--bg-soft); }
+.speaker__portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.speaker__portrait figcaption { position: absolute; right: 10px; bottom: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,.58); color: #fff; font-size: .55rem; }
+.speaker__body { padding: 1.7rem; display: flex; flex: 1; flex-direction: column; }
+.speaker__role { font-size: .73rem; color: var(--primary-dark); font-weight: 600; }
+.speaker h3 { font-size: clamp(1.4rem,2.4vw,1.85rem); line-height: 1.2; letter-spacing: -.03em; margin-top: .5rem; }
+.speaker__bio { margin-top: 1rem; color: var(--ink-soft); font-size: .94rem; line-height: 1.7; }
+.speaker__links { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem 1.2rem; padding-top: 1.5rem; margin-top: auto; }
+.speaker__links a { display: inline-flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 600; min-height: 44px; }
+.speaker__links a:hover { color: var(--primary-dark); }
+.speaker__article { border-bottom: 1px solid var(--line); }
+.speaker__links a:focus-visible, .past-lineup summary:focus-visible, .past-gallery summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
+.dinner-format__grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2.5rem; margin-top: 2.5rem; }
+.dinner-format__number { display: block; font-size: 4rem; line-height: 1.2; font-weight: 600; letter-spacing: -.06em; color: var(--primary); }
+.dinner-format h3 { margin: .7rem 0; font-size: 1.05rem; }
+.dinner-format p { font-size: .9rem; color: var(--ink-soft); }
+.past-lineup, .past-gallery { margin-top: 2rem; border-block: 1px solid var(--line); padding-block: 1.2rem; }
+.past-lineup summary, .past-gallery summary { cursor: pointer; font-size: .9rem; font-weight: 600; }
+.past-gallery .recap__grid { margin-top: 1.7rem; }
+@media (max-width: 760px) {
+  .speakers__grid, .dinner-format__grid { grid-template-columns: 1fr; }
+  .speaker__portrait { height: 270px; }
+  .speaker__brand { padding-inline: 1.3rem; }
+  .speaker__body { padding: 1.3rem; }
+  .dinner-format__grid { gap: 1.7rem; }
+  .dinner-format__grid > div { border-top: 1px solid var(--line); padding-top: 1.3rem; }
+  .hero__note { max-width: none; }
+}
+
 /* ---------- Zusagen / Logo-Bar (schließt den Header ab) ---------- */
 .approvals { padding: 0 var(--gutter) clamp(3rem, 6vw, 4.5rem); }
 .approvals .container { border-top: 1px solid var(--line); padding-top: clamp(1.2rem, 2.2vw, 1.7rem); }
