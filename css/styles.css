@@ -697,7 +697,6 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 .dinner-statement { background: var(--bg-soft); }
 .dinner-statement .container { max-width: 1320px; }
 .dinner-statement__panel .vision__highlight-text { font-size: clamp(.8rem, 1.05vw, 1rem); line-height: 1.8; color: var(--ink); }
-.dinner-statement__panel strong { font-weight: 800; }
 @media (max-width: 600px) {
   .dinner-statement__panel .vision__highlight-text { font-size: .95rem; text-wrap: balance; }
 }
