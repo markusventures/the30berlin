@@ -225,8 +225,6 @@ a { color: inherit; text-decoration: none; }
   font-size: clamp(1rem, 1.5vw, 1.12rem); line-height: 1.5; }
 
 /* ---------- Stimmen der Gäste ---------- */
-.voices { background-color: var(--bg-soft); }
-.voices__inner { max-width: 1320px; }
 /* 6er-Raster: normale Karte = 2 Spalten (drei pro Reihe), .voice--wide = 3 Spalten (zwei pro Reihe) */
 .voices__grid { display: grid; gap: 1rem; grid-template-columns: repeat(6, 1fr); margin-top: 2.4rem; }
 .voice { grid-column: span 2; margin: 0; display: flex; flex-direction: column; background: #fff;
@@ -649,9 +647,9 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 
 /* Speaker section for the second edition. */
 .speakers { background: var(--bg-soft); }
-.speakers .container { max-width: 1240px; }
+.speakers .container { max-width: 1520px; }
 .speakers .section__title { max-width: none; }
-.speakers__grid { display: grid; grid-template-columns: repeat(2,minmax(0,438.46px)); justify-content: center; align-items: stretch; gap: 1.5rem; margin-top: 2.8rem; }
+.speakers__grid { display: grid; grid-template-columns: repeat(3,minmax(0,438.46px)); justify-content: center; align-items: stretch; gap: 1.5rem; margin-top: 2.8rem; }
 .speaker { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
 .speaker__brand { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.6rem; min-height: 104px; }
 .speaker__brand img { width: 148px; height: 64px; object-fit: contain; }
@@ -672,4 +670,19 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
   .speakers__grid { grid-template-columns: minmax(0,438.46px); }
   .speaker__brand { padding-inline: 1.3rem; }
   .speaker__body { padding: 1.3rem; }
+}
+
+/* Music teaser and the unified retrospective. */
+.speaker__brand .speaker__music-label { display: inline-flex; align-items: center; gap: .7rem; color: var(--ink); max-width: none; }
+.speaker__brand .speaker__music-label > span { font-size: .85rem; font-weight: 600; max-width: none; }
+.speaker__portrait--mystery { background: #16151a; }
+.speaker__portrait--mystery > img { filter: blur(8px); transform: scale(1.1); opacity: .65; }
+.speaker__mystery-mark { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 4rem; font-weight: 500; }
+.speaker__pending { margin-top: auto; padding-top: 1.8rem; font-size: .75rem; color: var(--ink-soft); }
+.recap__meta { margin-top: 1rem; color: var(--ink-soft); font-size: .9rem; }
+.recap__photos-title { margin-top: 3rem; font-size: 1.25rem; font-weight: 600; }
+.recap-anchor { display: block; }
+@media (min-width: 761px) and (max-width: 1100px) {
+  .speakers__grid { grid-template-columns: repeat(2,minmax(0,438.46px)); }
+  .speaker--music { grid-column: 1 / -1; width: min(100%,438.46px); justify-self: center; }
 }
