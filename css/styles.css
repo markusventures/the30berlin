@@ -700,6 +700,7 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 @media (max-width: 600px) {
   .dinner-statement__panel .vision__highlight-text { font-size: .95rem; text-wrap: balance; }
 }
+.recap__statement { margin-top: clamp(2rem,4vw,3rem); }
 .recap__grid--second { margin-top: clamp(2rem,4vw,3rem); }
 
 /* Aligned columns preserve the masonry rhythm and crop only the last tile. */
