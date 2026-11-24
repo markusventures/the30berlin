@@ -686,3 +686,9 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
   .speakers__grid { grid-template-columns: repeat(2,minmax(0,438.46px)); }
   .speaker--music { grid-column: 1 / -1; width: min(100%,438.46px); justify-self: center; }
 }
+
+/* Space for the dinner introduction and guest feedback within the recap. */
+.recap__intro { max-width: 78ch; margin: clamp(2rem,4vw,3rem) auto 0; color: var(--ink-soft); font-size: clamp(1rem,1.35vw,1.1rem); line-height: 1.8; }
+.recap__intro p + p { margin-top: 1.2rem; }
+.recap__quotes-title { margin-top: clamp(2.5rem,4vw,3.5rem); font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
+.recap__quotes-title + .voices__grid { margin-top: 1.4rem; }
