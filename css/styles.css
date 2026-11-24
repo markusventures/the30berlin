@@ -692,3 +692,9 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 .recap__intro p + p { margin-top: 1.2rem; }
 .recap__quotes-title { margin-top: clamp(2.5rem,4vw,3.5rem); font-size: 1.25rem; font-weight: 600; line-height: 1.4; }
 .recap__quotes-title + .voices__grid { margin-top: 1.4rem; }
+
+/* A deliberate pause halfway through the photo retrospective. */
+.recap__statement { margin-top: clamp(2rem,4vw,3rem); padding: clamp(2.5rem,5vw,4.5rem) clamp(1.4rem,4vw,3rem); border-radius: var(--radius); background: var(--ink-2); color: #fff; text-align: center; }
+.recap__statement p { max-width: 40ch; margin-inline: auto; font-size: clamp(1.45rem,3vw,2.5rem); line-height: 1.4; font-weight: 500; letter-spacing: -.025em; }
+.recap__statement-number { color: var(--primary); font-weight: 700; }
+.recap__grid--second { margin-top: clamp(2rem,4vw,3rem); }
