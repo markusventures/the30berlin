@@ -217,6 +217,62 @@
     videos.forEach((v) => vio.observe(v));
   }
 
+  /* ---- Galerie-Spalten unten bündig abschließen ----
+     Die normale CSS-Spaltenaufteilung bleibt die Grundlage. Nur die jeweils
+     letzte Kachel wird auf die kürzeste Spalte gekürzt; die Lightbox zeigt
+     weiterhin das vollständige Original. Unten ausrichten schneidet oben ab. */
+  const galleries = Array.from(document.querySelectorAll('.recap__grid')).map((grid) => ({
+    grid, tiles: Array.from(grid.querySelectorAll('[data-lightbox]'))
+  }));
+  function alignGalleries() {
+    galleries.forEach(({ grid, tiles }) => {
+      grid.classList.remove('is-aligned');
+      tiles.forEach((tile) => {
+        tile.classList.remove('recap__item--cropped');
+        tile.style.removeProperty('height');
+      });
+      grid.replaceChildren(...tiles);
+      const gap = getComputedStyle(grid).columnGap;
+      const columns = [];
+      tiles.forEach((tile) => {
+        const rect = tile.getBoundingClientRect();
+        let column = columns.find((c) => Math.abs(c.x - rect.left) < 1);
+        if (!column) {
+          column = { x: rect.left, top: rect.top, tiles: [] };
+          columns.push(column);
+        }
+        column.tiles.push({ tile, rect });
+      });
+      if (!columns.length) return;
+      const height = Math.min(...columns.map((c) => c.tiles[c.tiles.length - 1].rect.bottom - c.top));
+      grid.style.setProperty('--recap-columns', columns.length);
+      grid.style.setProperty('--recap-gap', gap);
+      grid.classList.add('is-aligned');
+      columns.forEach((column) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'recap__column';
+        const last = column.tiles[column.tiles.length - 1];
+        const remaining = height - (last.rect.top - column.top);
+        if (remaining > 0 && remaining < last.rect.height - 0.5) {
+          last.tile.classList.add('recap__item--cropped');
+          last.tile.style.height = remaining + 'px';
+        }
+        column.tiles.forEach(({ tile }) => wrapper.appendChild(tile));
+        grid.appendChild(wrapper);
+      });
+    });
+  }
+  let galleryFrame;
+  function queueGalleryLayout() {
+    cancelAnimationFrame(galleryFrame);
+    galleryFrame = requestAnimationFrame(alignGalleries);
+  }
+  galleries.forEach(({ tiles }) => tiles.forEach((tile) => {
+    tile.querySelector('img').addEventListener('load', queueGalleryLayout);
+  }));
+  window.addEventListener('resize', queueGalleryLayout, { passive: true });
+  queueGalleryLayout();
+
   /* ---- Sanftes Einblenden der Sektionen beim Scrollen ---- */
   const items = document.querySelectorAll(".reveal");
   if (!("IntersectionObserver" in window)) {
