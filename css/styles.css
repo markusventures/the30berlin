@@ -651,13 +651,13 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 .speakers { background: var(--bg-soft); }
 .speakers .container { max-width: 1240px; }
 .speakers .section__title { max-width: none; }
-.speakers__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 2.8rem; }
+.speakers__grid { display: grid; grid-template-columns: repeat(2,minmax(0,438.46px)); justify-content: center; align-items: stretch; gap: 1.5rem; margin-top: 2.8rem; }
 .speaker { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
 .speaker__brand { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.3rem 1.6rem; min-height: 104px; }
 .speaker__brand img { width: 148px; height: 64px; object-fit: contain; }
 .speaker__brand span { font-size: .65rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); max-width: 13ch; }
-.speaker__portrait { position: relative; height: 285px; overflow: hidden; background: var(--bg-soft); }
-.speaker__portrait > img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.speaker__portrait { position: relative; aspect-ratio: 620 / 403; flex-shrink: 0; overflow: hidden; background: var(--bg-soft); }
+.speaker__portrait > img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
 .speaker__portrait figcaption { position: absolute; right: 10px; bottom: 8px; padding: 2px 6px; border-radius: 4px; background: rgba(0,0,0,.58); color: #fff; font-size: .55rem; }
 .speaker__body { padding: 1.7rem; display: flex; flex: 1; flex-direction: column; }
 .speaker__role { font-size: .73rem; color: var(--primary-dark); font-weight: 600; }
@@ -669,8 +669,7 @@ html[lang="en"] .voice__quote::before { content: "“"; vertical-align: -0.28em;
 .speaker__article { border-bottom: 1px solid var(--line); }
 .speaker__links a:focus-visible { outline: 2px solid var(--primary); outline-offset: 5px; }
 @media (max-width: 760px) {
-  .speakers__grid { grid-template-columns: 1fr; }
-  .speaker__portrait { height: 270px; }
+  .speakers__grid { grid-template-columns: minmax(0,438.46px); }
   .speaker__brand { padding-inline: 1.3rem; }
   .speaker__body { padding: 1.3rem; }
 }
