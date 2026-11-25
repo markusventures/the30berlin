@@ -50,7 +50,7 @@
         <button type="button" class="langswitch__btn is-active" data-lang="de">DE</button>
         <button type="button" class="langswitch__btn" data-lang="en">EN</button>
       </div>
-      <a href="https://luma.com/bhbs4krd" target="_blank" rel="noopener" class="btn btn--dark btn--nav" data-en="Secure my spot">Platz sichern</a>
+      <a href="#register" class="btn btn--dark btn--nav" data-en="Secure my spot">Platz sichern</a>
     </div>
   </header>
 
@@ -68,7 +68,7 @@
           </p>
         </div>
         <div class="hero__cta">
-          <a href="https://luma.com/bhbs4krd" target="_blank" rel="noopener" class="btn btn--dark btn--lg" data-en="Secure my spot">Platz sichern</a>
+          <a href="#register" class="btn btn--dark btn--lg" data-en="Secure my spot">Platz sichern</a>
         </div>
       </div>
       <div class="hero__media reveal">
@@ -151,7 +151,7 @@
       </div>
     </article></div>
       <div class="section-cta reveal">
-        <a href="https://luma.com/bhbs4krd" target="_blank" rel="noopener" class="btn btn--dark" data-en="Secure my spot">Platz sichern</a>
+        <a href="#register" class="btn btn--dark" data-en="Secure my spot">Platz sichern</a>
       </div>
     </div>
   </section>
@@ -343,9 +343,9 @@
       </div>
       <div class="section-cta reveal">
         <p class="section-cta__text" data-en="The next edition is on 18 February 2027. Are you in?">Die nächste Ausgabe ist am 18. Februar 2027. Bist du dabei?</p>
-        <a href="https://luma.com/bhbs4krd"
+        <a href="#register"
            class="btn btn--dark"
-           target="_blank" rel="noopener" data-en="Secure my spot">Platz sichern</a>
+           data-en="Secure my spot">Platz sichern</a>
       </div>
     </div>
   </section>
@@ -483,9 +483,9 @@
         <h2 class="section__title section__title--sm" data-en="An extraordinary place in the heart of Berlin">Ein außergewöhnlicher Ort mitten in Berlin</h2>
         <p class="lead" data-en="The 30 is a private dinner in an exclusive setting, away from the bustle of the city. The exact location is shared personally with all confirmed guests in advance.">The 30 ist ein privates Dinner in exklusivem Rahmen, fernab vom Trubel der Stadt. Die genaue Location wird allen bestätigten Gästen vorab persönlich mitgeteilt.</p>
         <div class="section-cta reveal">
-          <a href="https://luma.com/bhbs4krd"
+          <a href="#register"
              class="btn btn--dark"
-             target="_blank" rel="noopener" data-en="Secure my spot">Platz sichern</a>
+             data-en="Secure my spot">Platz sichern</a>
         </div>
       </div>
       <div class="location__media reveal">
@@ -561,30 +561,25 @@
   </section>
 
   <!-- ============ REGISTER (Luma) ============ -->
-  <section class="section register" id="register">
+  <section class="section register" id="register" tabindex="-1" aria-labelledby="register-title">
     <div class="container register__inner">
       <span class="eyebrow" data-en="Next edition">Nächste Ausgabe</span>
-      <h2 class="section__title section__title--sm reveal" data-en="The 30 continues. Be there next time.">The 30 geht weiter. Sei beim nächsten Mal dabei.</h2>
+      <h2 id="register-title" class="section__title section__title--sm reveal" data-en="The 30 continues. Be there next time.">The 30 geht weiter. Sei beim nächsten Mal dabei.</h2>
       <p class="register__status reveal" data-en="Invite only · 18 February 2027">Invite only · 18. Februar 2027</p>
       <p class="lead reveal" data-en="The next edition takes place on 18 February 2027. Put your name down now, every request is reviewed personally.">Die nächste Ausgabe findet am 18. Februar 2027 statt. Trag dich jetzt ein, jede Anfrage wird persönlich geprüft.</p>
-      <div class="luma-embed reveal">
-        <!-- Offizieller Luma-Checkout-Button: öffnet die Anmeldung als Overlay.
-             Ohne das Luma-Script bleibt es ein normaler Link auf die Event-Seite. -->
-        <a
-          href="https://luma.com/bhbs4krd"
-          class="btn btn--dark btn--lg"
-          target="_blank" rel="noopener"
-          data-en="Secure my spot"
-        >Platz sichern</a>
-        <p class="luma-embed__note" data-en="Opens the registration page at Luma in a new tab.">Öffnet die Anmeldeseite bei Luma in einem neuen Tab.</p>
+      <div class="luma-embed">
+        <iframe
+          id="luma-registration"
+          src="https://luma.com/embed/event/evt-eEInDO1rMSK2lyG/simple"
+          title="Luma-Anmeldung: The 30 · Vol. 2 · 18. Februar 2027"
+          width="600" height="800"
+          loading="lazy"
+          allow="fullscreen; payment"
+          aria-label="Anmeldung für The 30, Vol. 2"
+        ></iframe>
+        <p class="luma-embed__note" data-en="Every request is reviewed personally. Registration is handled by Luma.">Jede Anfrage wird persönlich geprüft. Die Anmeldung erfolgt über Luma.</p>
+        <a class="luma-embed__fallback" href="https://luma.com/bhbs4krd" target="_blank" rel="noopener noreferrer" data-en="Having trouble? Open registration directly on Luma ↗">Probleme mit der Anzeige? Anmeldung direkt bei Luma öffnen ↗</a>
       </div>
-      <!-- Mobile: kompakte Karte statt scrollbarem Embed -->
-      <a class="luma-card reveal" href="https://luma.com/bhbs4krd" target="_blank" rel="noopener">
-        <span class="luma-card__date" data-en="Next edition · 18 February 2027">Nächste Ausgabe · 18. Februar 2027</span>
-        <span class="luma-card__title">The 30: Creator Marketing Leaders</span>
-        <span class="luma-card__btn" data-en="Secure my spot">Platz sichern</span>
-        <span class="luma-card__note" data-en="Every request is reviewed personally">Jede Anfrage wird persönlich geprüft</span>
-      </a>
     </div>
   </section>
 
@@ -605,7 +600,7 @@
         <p data-en="Creator Marketing Leaders Berlin · presented by WePush">Creator Marketing Leaders Berlin · presented by WePush</p>
       </div>
       <div class="footer__links">
-        <a href="https://luma.com/bhbs4krd" target="_blank" rel="noopener" data-en="Registration">Anmeldung</a>
+        <a href="#register" data-en="Registration">Anmeldung</a>
         <a href="https://wepush.com" target="_blank" rel="noopener">WePush</a>
         <a href="#top" data-en="Back to top">Nach oben</a>
       </div>

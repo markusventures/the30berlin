@@ -24,10 +24,25 @@
       if (!target) return;
       e.preventDefault();
       if (toTop) window.scrollTo({ top: 0, behavior: "smooth" });
-      else target.scrollIntoView({ behavior: "smooth" });
+      else {
+        target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+        if (id === "register") target.focus({ preventScroll: true });
+      }
       cleanUrl();
     });
   });
+
+  /* Preserve invitation campaign attribution in the official Luma embed. */
+  const registrationFrame = document.getElementById("luma-registration");
+  if (registrationFrame) {
+    const embedUrl = new URL(registrationFrame.src);
+    const pageParams = new URLSearchParams(window.location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid", "li_fat_id"].forEach((key) => {
+      const value = pageParams.get(key);
+      if (value) embedUrl.searchParams.set(key, value);
+    });
+    if (embedUrl.href !== registrationFrame.src) registrationFrame.src = embedUrl.href;
+  }
 
   /* ---- Sprachumschalter DE / EN ----
      Jedes übersetzbare Element trägt data-en mit der englischen Fassung.
